@@ -1,6 +1,6 @@
 ﻿namespace TrendShop.Catalog.Dtos.ProductDetails
 {
-    public class GetByIDProductDto
+    public class GetByIdProductDto
     {
         public string ProductID { get; set; }
         public string ProductName { get; set; }
