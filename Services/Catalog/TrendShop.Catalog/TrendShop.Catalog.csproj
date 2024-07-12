@@ -18,7 +18,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Operations\ProductImageServices\" />
     <Folder Include="Operations\ProductDetailServices\" />
-    <Folder Include="Operations\ProductServices\" />
   </ItemGroup>
 
 </Project>
