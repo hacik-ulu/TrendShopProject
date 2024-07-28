@@ -47,8 +47,8 @@ namespace TrendShop.Catalog.Operations.ProductDetailServices
 
         public async Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto)
         {
-            var values = _mapper.Map<ProductDetail>(_productDetailCollection);
-            await _productDetailCollection.FindOneAndReplaceAsync(x => x.ProductDetailID == updateProductDetailDto.ProductID, values);
+            var values = _mapper.Map<ProductDetail>(updateProductDetailDto);
+            await _productDetailCollection.FindOneAndReplaceAsync(x => x.ProductDetailID == updateProductDetailDto.ProductDetailID, values);
         }
     }
 }
