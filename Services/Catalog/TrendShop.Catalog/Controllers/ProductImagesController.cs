@@ -35,21 +35,21 @@ namespace TrendShop.Catalog.Controllers
         public async Task<IActionResult> CreateProductImage(CreateProductImageDto createProductImageDto)
         {
             await _ProductImageService.CreateProductImageAsync(createProductImageDto);
-            return Ok("Ürün Görseli Eklendi!");
+            return Ok("Ürün Görselleri Başarıyla Eklendi!");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteProductImage(string id)
         {
-            var values = await _ProductImageService.GetByIdProductImageAsync(id);
-            return Ok("Ürün Görseli Silindi!");
+            await _ProductImageService.DeleteProductImageAsync(id);
+            return Ok("Ürün Görselleri Başarıyla Silindi!");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateProductImage(UpdateProductImageDto updateProductImageDto)
         {
             await _ProductImageService.UpdateProductImageAsync(updateProductImageDto);
-            return Ok("Ürün Görseli Başarıyla Güncellendi");
+            return Ok("Ürün Görselleri Başarıyla Güncellendi");
         }
     }
 }

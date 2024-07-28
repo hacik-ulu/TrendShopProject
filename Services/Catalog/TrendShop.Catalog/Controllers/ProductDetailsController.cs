@@ -33,21 +33,21 @@ namespace TrendShop.Catalog.Controllers
         public async Task<IActionResult> CreateProductDetail(CreateProductDetailDto createProductDetailDto)
         {
             await _ProductDetailService.CreateProductDetailAsync(createProductDetailDto);
-            return Ok("Ürün Detayı Eklendi!");
+            return Ok("Ürün Detayları Başarıyla Eklendi!");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteProductDetail(string id)
         {
-            var values = await _ProductDetailService.GetByIdProductDetailAsync(id);
-            return Ok("Ürün Detayı Silindi!");
+            await _ProductDetailService.DeleteProductDetailAsync(id);
+            return Ok("Ürün Detayları Başarıyla Silindi!");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateProductDetail(UpdateProductDetailDto updateProductDetailDto)
         {
             await _ProductDetailService.UpdateProductDetailAsync(updateProductDetailDto);
-            return Ok("Ürün Detayı Başarıyla Güncellendi");
+            return Ok("Ürün Detayları Başarıyla Güncellendi");
         }
     }
 }

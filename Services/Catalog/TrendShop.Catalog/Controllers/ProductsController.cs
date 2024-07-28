@@ -33,14 +33,14 @@ namespace TrendShop.Catalog.Controllers
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
             await _ProductService.CreateProductAsync(createProductDto);
-            return Ok("Ürün Eklendi!");
+            return Ok("Ürün Başarıyla Eklendi!");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(string id)
         {
-            var values = await _ProductService.GetByIdProductAsync(id);
-            return Ok("Ürün Silindi!");
+            await _ProductService.DeleteProductAsync(id);
+            return Ok("Ürün Başarıyla Silindi!");
         }
 
         [HttpPut]

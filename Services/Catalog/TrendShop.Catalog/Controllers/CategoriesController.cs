@@ -34,14 +34,14 @@ namespace TrendShop.Catalog.Controllers
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
             await _categoryService.CreateCategoryAsync(createCategoryDto);
-            return Ok("Kategori Eklendi!");
+            return Ok("Kategori Başarıyla Eklendi!");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteCategory(string id)
         {
-            var values = await _categoryService.GetByIdCategoryAsync(id);
-            return Ok("Kategori Silindi!");
+            await _categoryService.DeleteCategoryAsync(id);
+            return Ok("Kategori Başarıyla Silindi");
         }
 
         [HttpPut]
