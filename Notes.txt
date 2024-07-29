@@ -1,2 +1,8 @@
 Catalog Service --> MongoDB
 Discount Service --> Local MSSQL sonrasýnda Docker üzerindeki sunucu ile MSSQL'e ulaþacaðýz.(Dapper yaklaþýmý)
+Order Service --> Docker üzerinden MSSQL'e baðlanacaðýz.
+
+Commands --> Crud propertyleri
+Queries --> Idye göre Listemele için Id propertysini parametre olarak göndeririz
+Result --> Sonuçlarý komple listelemek için
+Handlers--> Operasyonlarý yazdýðýmýz yer.
