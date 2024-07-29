@@ -1,0 +1,2 @@
+Catalog Service --> MongoDB
+Discount Service --> Local MSSQL sonrasýnda Docker üzerindeki sunucu ile MSSQL'e ulaþacaðýz.(Dapper yaklaþýmý)

@@ -7,7 +7,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{04
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{CB5620A3-89F2-4738-8ED8-7C9E2002972D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShop.Catalog", "Services\Catalog\TrendShop.Catalog\TrendShop.Catalog.csproj", "{D1B07124-7E4B-4AEC-A016-6D950645388B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.Catalog", "Services\Catalog\TrendShop.Catalog\TrendShop.Catalog.csproj", "{D1B07124-7E4B-4AEC-A016-6D950645388B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{0BC819F3-1528-4F00-A7A2-DDAFC2FD5E53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseType", "DatabaseType", "{46F0AE85-E285-4AE0-80F7-1BF29705B13C}"
+	ProjectSection(SolutionItems) = preProject
+		Notes.txt = Notes.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShop.Discount", "Services\Discount\TrendShop.Discount\TrendShop.Discount.csproj", "{43FEF1CE-9B91-4583-9712-F28398F546BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +28,10 @@ Global
 		{D1B07124-7E4B-4AEC-A016-6D950645388B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1B07124-7E4B-4AEC-A016-6D950645388B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1B07124-7E4B-4AEC-A016-6D950645388B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43FEF1CE-9B91-4583-9712-F28398F546BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43FEF1CE-9B91-4583-9712-F28398F546BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43FEF1CE-9B91-4583-9712-F28398F546BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43FEF1CE-9B91-4583-9712-F28398F546BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,6 +39,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CB5620A3-89F2-4738-8ED8-7C9E2002972D} = {04E703A8-7D89-4F8B-BFDF-0CF57F4DAEDF}
 		{D1B07124-7E4B-4AEC-A016-6D950645388B} = {CB5620A3-89F2-4738-8ED8-7C9E2002972D}
+		{0BC819F3-1528-4F00-A7A2-DDAFC2FD5E53} = {04E703A8-7D89-4F8B-BFDF-0CF57F4DAEDF}
+		{43FEF1CE-9B91-4583-9712-F28398F546BB} = {0BC819F3-1528-4F00-A7A2-DDAFC2FD5E53}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4028C25B-4AFB-4428-A4A4-8E385B4F18BC}
