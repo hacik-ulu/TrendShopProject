@@ -11,12 +11,9 @@ namespace TrendShop.Order.Application.Interfaces
     {
         Task<List<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<T> CreateAsync(T entity);
-        Task<T> UpdateAsync(T entity);
-        Task<T> DeleteAsync(T Entity);
-
-        // Filtrelemenin sonucu doğru ya da yanlış olarak tutulacak
-        // filter --> Gönderilen Parametre
+        Task CreateAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(T Entity);
         Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter);
 
     }
