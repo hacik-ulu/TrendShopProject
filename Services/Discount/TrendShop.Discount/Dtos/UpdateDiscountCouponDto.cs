@@ -1,6 +1,6 @@
 ﻿namespace TrendShop.Discount.Dtos
 {
-    public class ResultCouponDto
+    public class UpdateDiscountCouponDto
     {
         public int CouponID { get; set; }
         public string Code { get; set; }
