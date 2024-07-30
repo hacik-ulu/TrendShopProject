@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrendShop.Order.Domain.Entities
+namespace TrendShop.Order.Application.Features.Mediator.Results.OrderingResults
 {
-    public class Ordering
+    public class GetOrderingByIdQueryResult
     {
         public int OrderingID { get; set; }
         public string UserID { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime OrderDate { get; set; }
-        public List<OrderDetail> OrderDetails { get; set; }
     }
 }
