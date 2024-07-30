@@ -10,7 +10,7 @@ namespace TrendShop.Order.Application.Features.CQRS.Commands.AddressCommands
     {
         public int AddressID { get; set; }
         public string UserID { get; set; }
-        public string District { get; set; } // Şehir bilgisi
+        public string District { get; set; }
         public string City { get; set; }
         public string Detail { get; set; }
     }

@@ -14,6 +14,7 @@ namespace TrendShop.Order.Domain.Entities
         public string ProductID { get; set; }
         public decimal ProductPrice { get; set; }
         public int ProductAmount { get; set; }
+        public string ProductName { get; set; }
         public decimal ProductTotalPrice { get; set; } // Genel toplamın hesaplanması
         public decimal OrderingID { get; set; } // Genel toplamın son hali
         public Ordering Ordering { get; set; } // Genel toplamın son hali

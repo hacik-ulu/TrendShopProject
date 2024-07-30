@@ -11,7 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\..\Core\TrendShop.Order.Application\TrendShop.Order.Application.csproj" />
+    <ProjectReference Include="..\..\Core\TrendShop.Order.Domain\TrendShop.Order.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\TrendShop.Order.Persistence\TrendShop.Order.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
