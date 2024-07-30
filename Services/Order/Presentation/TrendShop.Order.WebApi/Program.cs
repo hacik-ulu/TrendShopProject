@@ -1,8 +1,15 @@
 using TrendShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using TrendShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
+using TrendShop.Order.Application.Interfaces;
+using TrendShop.Order.Application.Services;
+using TrendShop.Order.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+//Service Registration için
+builder.Services.AddApplicationService(builder.Configuration);
 
 #region
 builder.Services.AddScoped<GetAddressQueryHandler>();
@@ -17,7 +24,6 @@ builder.Services.AddScoped<CreateOrderDetailCommandHandler>();
 builder.Services.AddScoped<UpdateOrderDetailCommandHandler>();
 builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
 #endregion
-
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
