@@ -12,7 +12,7 @@ namespace TrendShop.Order.Persistence.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=HACIKULU\\SQLEXPRESS;Initial Catalog =TrendShopCatalogDb;integrated Security=true");
+            optionsBuilder.UseSqlServer("Server=localhost,1440;Initial Catalog =TrendShopCatalogDb;User=sa;Password=123456789Hh.");
         }
 
         public DbSet<Address> Addresses { get; set; }

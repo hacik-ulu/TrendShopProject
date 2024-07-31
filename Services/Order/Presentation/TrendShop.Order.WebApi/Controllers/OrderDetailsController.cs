@@ -47,14 +47,14 @@ namespace TrendShop.Order.WebApi.Controllers
             return Ok("Sipariş Detay bilgisi başarıyla eklendi");
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> UpdateOrderDetail(UpdateOrderDetailCommand command)
         {
             await _updateOrderDetailCommandHandler.Handle(command);
             return Ok("Sipariş Detay bilgileri başarıyla güncellendi");
         }
 
-        [HttpGet]
+        [HttpDelete]
         public async Task<IActionResult> RemoveOrderDetail(int id)
         {
             await _removeOrderDetailCommandHandler.Handle(new RemoveOrderDetailCommand(id));

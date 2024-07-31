@@ -12,6 +12,5 @@ namespace TrendShop.Order.Application.Features.Mediator.Results.OrderingResults
         public string UserID { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime OrderDate { get; set; }
-        public int MyProperty { get; set; }
     }
 }

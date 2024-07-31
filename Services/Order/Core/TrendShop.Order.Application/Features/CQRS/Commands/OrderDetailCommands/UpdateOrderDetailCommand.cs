@@ -14,6 +14,6 @@ namespace TrendShop.Order.Application.Features.CQRS.Commands.OrderDetailCommands
         public decimal ProductPrice { get; set; }
         public int ProductAmount { get; set; }
         public decimal ProductTotalPrice { get; set; }
-        public decimal OrderingID { get; set; }
+        public int OrderingID { get; set; }
     }
 }

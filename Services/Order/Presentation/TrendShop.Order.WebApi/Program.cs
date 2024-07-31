@@ -2,9 +2,12 @@ using TrendShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using TrendShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using TrendShop.Order.Application.Interfaces;
 using TrendShop.Order.Application.Services;
+using TrendShop.Order.Persistence.Context;
 using TrendShop.Order.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<OrderContext>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
