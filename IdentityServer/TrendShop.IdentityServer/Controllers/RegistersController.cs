@@ -23,7 +23,7 @@ namespace TrendShop.IdentityServer.Controllers
         {
             var values = new ApplicationUser()
             {
-                UserName = userRegisterDto.Surname,
+                UserName = userRegisterDto.Username,
                 Email = userRegisterDto.Email,
                 Surname = userRegisterDto.Surname,
                 Name = userRegisterDto.Name
