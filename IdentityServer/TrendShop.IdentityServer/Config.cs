@@ -15,9 +15,9 @@ namespace TrendShop.IdentityServer
         {
            // Api erişim kaynakları.
 
-           new ApiResource("ResourceCatalog"){Scopes = {"CatalogFullPermission","CatalogReadPermission" } },
-           new ApiResource("ResourceDiscount"){Scopes = { "DiscountFullPermission" } },
-           new ApiResource("OrderDiscount"){Scopes = { "OrderFullPermission" } }
+           new ApiResource("ResourceCatalog"){Scopes={"CatalogFullPermission","CatalogReadPermission"} },
+           new ApiResource("ResourceDiscount"){Scopes={"DiscountFullPermission"} },
+           new ApiResource("ResourceOrder"){Scopes = { "OrderFullPermission" } }
 
         };
 
@@ -38,7 +38,7 @@ namespace TrendShop.IdentityServer
             new ApiScope("CatalogFullPermission","Full authority for catalog operations"),
             new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
             new ApiScope("DiscountFullPermission","Full authority for discount operations"),
-            new ApiScope("OrderFullPermission","Full authority for order operations")
+            new ApiScope("OrderFullPermisson","Full authority for order operations")
         };
 
         public static IEnumerable<Client> Clients => new Client[]
@@ -60,7 +60,7 @@ namespace TrendShop.IdentityServer
                 ClientName = "Trend Shop Manager User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("trendshopsecret".Sha256())},
-                AllowedScopes = {"CatalogFullPermission" }
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
             },
 
             //Admin
@@ -70,7 +70,7 @@ namespace TrendShop.IdentityServer
                 ClientName = "Trend Shop Admin User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("trendshopsecret".Sha256())},
-                AllowedScopes = {"CatalogFullPermission","CatalogReadPermision", "DiscountFullPermission", "OrderFullPermission",
+                AllowedScopes={ "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermisson",
                 IdentityServerConstants.LocalApi.ScopeName,
 
                 // Admin kullanıcı bilgilerine erişiyor.
