@@ -12,6 +12,8 @@ namespace TrendShop.IdentityServer
     {
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
         {
+           // Api erişim kaynakları.
+
            new ApiResource("ResourceCatalog"){Scopes = {"CatalogFullPermission","CatalogReadPermission" } },
            new ApiResource("ResourceDiscount"){Scopes = { "DiscountFullPermission" } },
            new ApiResource("OrderDiscount"){Scopes = { "OrderFullPermission" } }
@@ -19,6 +21,7 @@ namespace TrendShop.IdentityServer
         };
 
         // Tokenı alınan kullanıcının hangi bilgilere erişim sağlayacağımızı belirliyoruz.
+        // Kullanıcıların bazı bilgilerini almak için kullanılır.
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
         {
             new IdentityResources.OpenId(),
@@ -28,10 +31,26 @@ namespace TrendShop.IdentityServer
 
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
         {
+            // Api erişim izinlerini kontrol ederiz.
+            // Scope --> Kaynak
+
             new ApiScope("CatalogFullPermission","Full authority for catalog operations"),
             new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
             new ApiScope("DiscountFullPermission","Full authority for discount operations"),
             new ApiScope("OrderFullPermission","Full authority for order operations")
+        };
+
+        public static IEnumerable<Client> Clients => new Client[]
+        {
+            // Visitor Client
+            new Client
+            {
+                ClientId = "TrendShopVisitorId",
+                ClientName ="Trend Shop Visitor User",
+                AllowedGrantTypes= GrantTypes.ClientCredentials,
+                ClientSecrets = {new Secret("trendshopsecret".Sha256())},
+                AllowedScopes = {"CatalogReadPermission"}
+            }
         };
     }
 }
