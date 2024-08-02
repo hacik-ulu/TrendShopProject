@@ -11,11 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.Catalog", "Servic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{0BC819F3-1528-4F00-A7A2-DDAFC2FD5E53}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseType", "DatabaseType", "{46F0AE85-E285-4AE0-80F7-1BF29705B13C}"
-	ProjectSection(SolutionItems) = preProject
-		Notes.txt = Notes.txt
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.Discount", "Services\Discount\TrendShop.Discount\TrendShop.Discount.csproj", "{43FEF1CE-9B91-4583-9712-F28398F546BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{D8D59C27-75CD-45F0-B3DB-FA112FB724DE}"
@@ -37,6 +32,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{DE985921-84DF-44C0-BAF8-6F9C82AFDDA5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.IdentityServer", "IdentityServer\TrendShop.IdentityServer\TrendShop.IdentityServer.csproj", "{D90EA783-7842-4F2A-9685-71DD5426A8B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{97F96600-9998-4979-ABB0-371C37488E9A}"
+	ProjectSection(SolutionItems) = preProject
+		IdentityServerVersionErrorSolution.txt = IdentityServerVersionErrorSolution.txt
+		PortainerCmd.txt = PortainerCmd.txt
+		DatabaseTypes.txt = DatabaseTypes.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
