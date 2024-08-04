@@ -18,7 +18,7 @@ namespace TrendShop.Discount.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=HACIKULU\\SQLEXPRESS;Initial Catalog =TrendShopCatalogDb;integrated Security=true");
+            optionsBuilder.UseSqlServer("Server=HACIKULU\\SQLEXPRESS;Initial Catalog =TrendShopDiscountDb;integrated Security=true");
         }
 
         public DbSet<Coupon> Coupons { get; set; }

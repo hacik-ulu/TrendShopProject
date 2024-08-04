@@ -12,7 +12,7 @@ using TrendShop.Discount.Context;
 namespace TrendShop.Discount.Migrations
 {
     [DbContext(typeof(DapperContext))]
-    [Migration("20240729091018_mig1")]
+    [Migration("20240804134523_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
