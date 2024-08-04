@@ -26,7 +26,9 @@ namespace TrendShop.IdentityServer
         // Kullanıcıların bazı bilgilerini almak için kullanılır.
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
         {
-
+            new IdentityResources.OpenId(),
+            new IdentityResources.Profile(),
+            new IdentityResources.Email()
         };
 
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
@@ -50,7 +52,7 @@ namespace TrendShop.IdentityServer
         ClientName ="Trend Shop Visitor User",
         AllowedGrantTypes= GrantTypes.ClientCredentials,
         ClientSecrets = {new Secret("trendshopsecret".Sha256())},
-        AllowedScopes = {"CatalogReadPermission"}
+        AllowedScopes = { "DiscountFullPermission" }
     },
 
     // Manager
@@ -75,7 +77,7 @@ namespace TrendShop.IdentityServer
             "CatalogReadPermission",
             "DiscountFullPermission",
             "OrderFullPermisson",
-            IdentityServerConstants.LocalApi.ScopeName, 
+            IdentityServerConstants.LocalApi.ScopeName,
             IdentityServerConstants.StandardScopes.Email,
             IdentityServerConstants.StandardScopes.OpenId,
             IdentityServerConstants.StandardScopes.Profile
