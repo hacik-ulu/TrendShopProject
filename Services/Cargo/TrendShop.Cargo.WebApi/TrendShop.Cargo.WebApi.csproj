@@ -7,11 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TrendShop.Cargo.BusinessLayer\TrendShop.Cargo.BusinessLayer.csproj" />
+    <ProjectReference Include="..\TrendShop.Cargo.DataAccessLayer\TrendShop.Cargo.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\TrendShop.Cargo.DtoLayer\TrendShop.Cargo.DtoLayer.csproj" />
+    <ProjectReference Include="..\TrendShop.Cargo.EntityLayer\TrendShop.Cargo.EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>
