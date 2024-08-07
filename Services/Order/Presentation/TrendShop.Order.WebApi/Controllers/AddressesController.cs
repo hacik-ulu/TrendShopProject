@@ -6,6 +6,7 @@ using TrendShop.Order.Application.Features.CQRS.Queries.AddressQueries;
 
 namespace TrendShop.Order.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AddressesController : ControllerBase

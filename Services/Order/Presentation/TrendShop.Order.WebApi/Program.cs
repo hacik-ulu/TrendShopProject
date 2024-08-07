@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TrendShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using TrendShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using TrendShop.Order.Application.Interfaces;
@@ -6,6 +7,14 @@ using TrendShop.Order.Persistence.Context;
 using TrendShop.Order.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.Audience = "ResourceOrder";
+    opt.RequireHttpsMetadata = false;
+});
+
 
 builder.Services.AddDbContext<OrderContext>();
 
@@ -44,6 +53,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
