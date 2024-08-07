@@ -12,9 +12,9 @@
     "TrendShop.Discount": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7194;http://localhost:5225",
+      "applicationUrl": "https://localhost:7208",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

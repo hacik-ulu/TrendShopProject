@@ -35,9 +35,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.IdentityServer", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{97F96600-9998-4979-ABB0-371C37488E9A}"
 	ProjectSection(SolutionItems) = preProject
+		DatabaseTypes.txt = DatabaseTypes.txt
 		IdentityServerVersionErrorSolution.txt = IdentityServerVersionErrorSolution.txt
 		PortainerCmd.txt = PortainerCmd.txt
-		DatabaseTypes.txt = DatabaseTypes.txt
+		PortNumbers.txt = PortNumbers.txt
 	EndProjectSection
 EndProject
 Global
