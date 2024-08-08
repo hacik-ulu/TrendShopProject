@@ -40,7 +40,7 @@ namespace TrendShop.Cargo.BusinessLayer.Concrete
 
         public void TUpdate(CargoCustomer entity)
         {
-            return _cargoCustomerDal.Update(entity);
+            _cargoCustomerDal.Update(entity);
         }
     }
 }
