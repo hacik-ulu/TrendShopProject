@@ -10,8 +10,4 @@
     <ProjectReference Include="..\TrendShop.Cargo.EntityLayer\TrendShop.Cargo.EntityLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
