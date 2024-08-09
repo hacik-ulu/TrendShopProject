@@ -10,6 +10,5 @@ namespace TrendShop.Cargo.EntityLayer.Concrete
     {
         public int CargoCompanyID { get; set; }
         public string CargoCompanyName { get; set; }
-        public List<CargoDetail> CargoDetails { get; set; }
     }
 }

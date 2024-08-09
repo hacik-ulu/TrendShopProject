@@ -2,3 +2,4 @@
 -- Catalog-->  7207
 -- Discount--> 7208
 -- Discount--> 7209
+-- Cargo--> 7210

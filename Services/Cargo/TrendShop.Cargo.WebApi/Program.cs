@@ -1,5 +1,22 @@
+using TrendShop.Cargo.BusinessLayer.Abstract;
+using TrendShop.Cargo.BusinessLayer.Concrete;
+using TrendShop.Cargo.DataAccessLayer.Abstract;
+using TrendShop.Cargo.DataAccessLayer.Concrete;
+using TrendShop.Cargo.DataAccessLayer.EntityFramework;
+
 var builder = WebApplication.CreateBuilder(args);
 
+#region Business and DataAccess Constructor Objects
+builder.Services.AddDbContext<CargoContext>();
+builder.Services.AddScoped<ICargoCompanyDal, EfCargoCompanyDal>();
+builder.Services.AddScoped<ICargoCompanyService, CargoCompanyManager>();
+builder.Services.AddScoped<ICargoCustomerDal, EfCargoCustomerDal>();
+builder.Services.AddScoped<ICargoCustomerService, CargoCustomerManager>();
+builder.Services.AddScoped<ICargoDetailDal, EfCargoDetailDal>();
+builder.Services.AddScoped<ICargoDetailService, CargoDetailManager>();
+builder.Services.AddScoped<ICargoOperationDal, EfCargoOperationDal>();
+builder.Services.AddScoped<ICargoOperationService, CargoOperationManager>();
+#endregion
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

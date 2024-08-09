@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.32" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.32">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,10 +25,6 @@
     <ProjectReference Include="..\TrendShop.Cargo.DataAccessLayer\TrendShop.Cargo.DataAccessLayer.csproj" />
     <ProjectReference Include="..\TrendShop.Cargo.DtoLayer\TrendShop.Cargo.DtoLayer.csproj" />
     <ProjectReference Include="..\TrendShop.Cargo.EntityLayer\TrendShop.Cargo.EntityLayer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

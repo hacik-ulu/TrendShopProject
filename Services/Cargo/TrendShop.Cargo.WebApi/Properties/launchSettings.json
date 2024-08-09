@@ -12,9 +12,9 @@
     "TrendShop.Cargo.WebApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7047;http://localhost:5197",
+      "applicationUrl": "https://localhost:7210",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

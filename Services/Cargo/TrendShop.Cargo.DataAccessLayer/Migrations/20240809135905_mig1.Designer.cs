@@ -12,7 +12,7 @@ using TrendShop.Cargo.DataAccessLayer.Concrete;
 namespace TrendShop.Cargo.DataAccessLayer.Migrations
 {
     [DbContext(typeof(CargoContext))]
-    [Migration("20240807133618_mig1")]
+    [Migration("20240809135905_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -138,17 +138,12 @@ namespace TrendShop.Cargo.DataAccessLayer.Migrations
             modelBuilder.Entity("TrendShop.Cargo.EntityLayer.Concrete.CargoDetail", b =>
                 {
                     b.HasOne("TrendShop.Cargo.EntityLayer.Concrete.CargoCompany", "CargoCompany")
-                        .WithMany("CargoDetails")
+                        .WithMany()
                         .HasForeignKey("CargoCompanyID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("CargoCompany");
-                });
-
-            modelBuilder.Entity("TrendShop.Cargo.EntityLayer.Concrete.CargoCompany", b =>
-                {
-                    b.Navigation("CargoDetails");
                 });
 #pragma warning restore 612, 618
         }
