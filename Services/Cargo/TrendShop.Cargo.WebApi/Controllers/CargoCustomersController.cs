@@ -6,6 +6,7 @@ using TrendShop.Cargo.EntityLayer.Concrete;
 
 namespace TrendShop.Cargo.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CargoCustomersController : ControllerBase

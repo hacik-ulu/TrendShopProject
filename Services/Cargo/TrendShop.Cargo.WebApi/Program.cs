@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TrendShop.Cargo.BusinessLayer.Abstract;
 using TrendShop.Cargo.BusinessLayer.Concrete;
 using TrendShop.Cargo.DataAccessLayer.Abstract;
@@ -5,6 +6,14 @@ using TrendShop.Cargo.DataAccessLayer.Concrete;
 using TrendShop.Cargo.DataAccessLayer.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.Audience = "ResourceCargo";
+    opt.RequireHttpsMetadata = false;
+});
+
 
 #region Business and DataAccess Constructor Objects
 builder.Services.AddDbContext<CargoContext>();
@@ -36,6 +45,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

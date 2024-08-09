@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TrendShop.Cargo.BusinessLayer.Abstract;
 using TrendShop.Cargo.DataAccessLayer.Abstract;
@@ -8,6 +9,7 @@ using TrendShop.Cargo.EntityLayer.Concrete;
 
 namespace TrendShop.Cargo.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CargoDetailsController : ControllerBase
