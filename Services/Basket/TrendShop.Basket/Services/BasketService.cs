@@ -21,9 +21,28 @@ namespace TrendShop.Basket.Services
         public async Task<BasketTotalDto> GetBasketTotal(string userId)
         {
             var existBasket = await _redisService.GetDb().StringGetAsync(userId);
-            // existBasketten gelen json verilerini BasketTotalDto'ya dönüştürür, deserilize eder.
-            return JsonSerializer.Deserialize<BasketTotalDto>(existBasket);
+
+            // JSON verisini logla
+            Console.WriteLine($"Retrieved JSON: {existBasket}");
+
+            if (string.IsNullOrEmpty(existBasket))
+            {
+                // Handle case where basket does not exist
+                return null; // Or throw an appropriate exception
+            }
+
+            try
+            {
+                return JsonSerializer.Deserialize<BasketTotalDto>(existBasket);
+            }
+            catch (JsonException ex)
+            {
+                // Log the exception
+                Console.WriteLine($"Deserialization error: {ex.Message}");
+                throw;
+            }
         }
+
 
         public async Task SaveBasket(BasketTotalDto basketTotalDto)
         {

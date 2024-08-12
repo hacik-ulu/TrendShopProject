@@ -22,7 +22,8 @@ namespace TrendShop.Basket.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMyBasketDetail()
         {
-            var values = _basketService.GetBasketTotal(_loginService.GetUserId);
+            var user = User.Claims; // Sisteme girilmiş olan tokenların bilgilerini verecek.
+            var values = await _basketService.GetBasketTotal(_loginService.GetUserId);
             return Ok(values);
         }
 
@@ -31,7 +32,7 @@ namespace TrendShop.Basket.Controllers
         {
             basketTotalDto.UserID = _loginService.GetUserId;
             await _basketService.SaveBasket(basketTotalDto);
-            return Ok("Sepetteli Değişiklikler Kaydedildi");
+            return Ok("Sepetteki Değişiklikler Kaydedildi");
         }
 
         [HttpDelete]

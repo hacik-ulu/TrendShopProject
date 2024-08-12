@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
+using System.IdentityModel.Tokens.Jwt;
 using TrendShop.Basket.LoginServices;
 using TrendShop.Basket.Services;
 using TrendShop.Basket.Settings;
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Bu deðiþken ile birlikte; bu deðiþkene bir kullanýcýnýn zorunlu olarak atanmasýný saðlýyoruz.
 var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub"); // sub deðerini maplemeden iþleme koymaya yarar.
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {

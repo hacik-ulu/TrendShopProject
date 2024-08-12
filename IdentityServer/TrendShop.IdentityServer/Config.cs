@@ -55,7 +55,7 @@ namespace TrendShop.IdentityServer
             {
                 ClientId = "TrendShopManagerId",
                 ClientName = "Trend Shop Manager User",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("trendshopsecret".Sha256())},
                 AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
             },
@@ -65,7 +65,7 @@ namespace TrendShop.IdentityServer
             {
                 ClientId = "TrendShopAdminId",
                 ClientName = "Trend Shop Admin User",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("trendshopsecret".Sha256())},
                 AllowedScopes={
                     "CatalogFullPermission",
