@@ -55,7 +55,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.Cargo.WebApi", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{F97040FB-6181-408A-8E58-931EFE888938}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShop.Basket", "Services\Basket\TrendShop.Basket\TrendShop.Basket.csproj", "{B170D7B8-C770-47B4-AF29-A225CC12E90B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.Basket", "Services\Basket\TrendShop.Basket\TrendShop.Basket.csproj", "{B170D7B8-C770-47B4-AF29-A225CC12E90B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
