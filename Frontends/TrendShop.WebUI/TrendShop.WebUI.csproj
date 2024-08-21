@@ -87,4 +87,8 @@
     <None Include="wwwroot\MainDownload-OvioAdmin-html5-template\html\tables\font-awesome\fonts\fontawesome-webfont.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TrendShop.DtoLayer\TrendShop.DtoLayer.csproj" />
+  </ItemGroup>
+
 </Project>

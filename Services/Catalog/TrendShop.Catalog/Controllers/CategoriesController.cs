@@ -6,7 +6,7 @@ using TrendShop.Catalog.Operations.CategoryServices;
 
 namespace TrendShop.Catalog.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
