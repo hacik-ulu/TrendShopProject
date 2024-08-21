@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 using TrendShop.DtoLayer.CatalogDtos.CategoryDtos;
 
 namespace TrendShop.WebUI.Areas.Admin.Controllers
@@ -36,5 +37,27 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult CreateCategory()
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Kategoriler";
+            ViewBag.v3 = "Yeni Kategori Girişi";
+            ViewBag.v4 = "Kategori İşlemleri";
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createCategoryDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7207/api/Categories", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Category", new { area = "Admin" });
+            }
+            return View();
+        }
     }
 }
