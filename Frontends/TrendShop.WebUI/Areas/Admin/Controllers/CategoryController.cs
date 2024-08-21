@@ -6,6 +6,7 @@ using TrendShop.DtoLayer.CatalogDtos.CategoryDtos;
 namespace TrendShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AllowAnonymous]
     public class CategoryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -15,7 +16,6 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             ViewBag.v1 = "Ana Sayfa";
@@ -34,5 +34,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
 
             return View();
         }
+
+        [HttpGet]
     }
 }
