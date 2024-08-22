@@ -5,7 +5,7 @@ using TrendShop.Catalog.Operations.ProductServices;
 
 namespace TrendShop.Catalog.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
