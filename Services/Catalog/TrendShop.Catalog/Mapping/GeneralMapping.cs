@@ -2,6 +2,7 @@
 using TrendShop.Catalog.Dtos.CategoryDtos;
 using TrendShop.Catalog.Dtos.ProductDetailDtos;
 using TrendShop.Catalog.Dtos.ProductDetails;
+using TrendShop.Catalog.Dtos.ProductDtos;
 using TrendShop.Catalog.Dtos.ProductImageDtos;
 using TrendShop.Catalog.Entities;
 
@@ -17,7 +18,7 @@ namespace TrendShop.Catalog.Mapping
             CreateMap<Category, UpdateCategoryDto>().ReverseMap();
             CreateMap<Category, GetByIdCategoryDto>().ReverseMap();
 
-            CreateMap<Product,ResultProductDto>().ReverseMap();
+            CreateMap<Product, ResultProductDto>().ReverseMap();
             CreateMap<Product, CreateProductDto>().ReverseMap();
             CreateMap<Product, UpdateProductDto>().ReverseMap();
             CreateMap<Product, GetByIdProductDto>().ReverseMap();
@@ -31,6 +32,9 @@ namespace TrendShop.Catalog.Mapping
             CreateMap<ProductImage, CreateProductImageDto>().ReverseMap();
             CreateMap<ProductImage, UpdateProductImageDto>().ReverseMap();
             CreateMap<ProductImage, GetByIdProductImageDto>().ReverseMap();
+
+            CreateMap<Product, ResultsProductsWithCategoryDto>().ReverseMap();
+
 
         }
     }

@@ -1,4 +1,5 @@
 ﻿using TrendShop.Catalog.Dtos.ProductDetails;
+using TrendShop.Catalog.Dtos.ProductDtos;
 
 namespace TrendShop.Catalog.Operations.ProductServices
 {
@@ -9,5 +10,6 @@ namespace TrendShop.Catalog.Operations.ProductServices
         Task UpdateProductAsync(UpdateProductDto updateProductDto);
         Task DeleteProductAsync(string id);
         Task<GetByIdProductDto> GetByIdProductAsync(string id);
+        Task<List<ResultsProductsWithCategoryDto>> GetProductsWithCategoryAsync();
     }
 }
