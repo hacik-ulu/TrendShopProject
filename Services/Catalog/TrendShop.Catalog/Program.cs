@@ -8,6 +8,7 @@ using TrendShop.Catalog.Operations.ProductImageImageServices;
 using TrendShop.Catalog.Operations.ProductImageServices;
 using TrendShop.Catalog.Operations.ProductServices;
 using TrendShop.Catalog.Services.FeatureSliderServices;
+using TrendShop.Catalog.Services.SpecialOfferServices;
 using TrendShop.Catalog.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
+builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
