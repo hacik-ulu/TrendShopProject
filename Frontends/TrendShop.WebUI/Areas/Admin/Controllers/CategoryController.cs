@@ -107,7 +107,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             var responseMessage = await client.PutAsync("https://localhost:7207/api/Categories/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Admin", new { area = "Admin" });
+                return RedirectToAction("Index", "Category", new { area = "Admin" });
             }
             return View();
         }
