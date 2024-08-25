@@ -36,21 +36,21 @@ namespace TrendShop.Catalog.Controllers
         public async Task<IActionResult> CreateFeatureSlider(CreateFeatureSliderDto createFeatureSliderDto)
         {
             await _featureSliderService.CreateFeatureSliderAsync(createFeatureSliderDto);
-            return Ok("Öne Çıkarılanlar Başarıyla Eklendi!");
+            return Ok("Öne çıkan görsel  Başarıyla Eklendi!");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteFeatureSlider(string id)
         {
             await _featureSliderService.DeleteFeatureSliderAsync(id);
-            return Ok("Öne Çıkarılanlar Başarıyla Silindi");
+            return Ok("Öne çıkan görsel  Başarıyla Silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateFeatureSlider(UpdateFeatureSliderDto updateFeatureSliderDto)
         {
             await _featureSliderService.UpdateFeatureSliderAsync(updateFeatureSliderDto);
-            return Ok("Öne Çıkarılanlar Başarıyla Güncellendi");
+            return Ok("Öne çıkan görsel  Başarıyla Güncellendi");
         }
     }
 }

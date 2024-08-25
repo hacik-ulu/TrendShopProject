@@ -20,9 +20,9 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Öne Çıkarılanlar";
-            ViewBag.v3 = "Öne Çıkarılanlar Listesi";
-            ViewBag.v4 = "Öne Çıkarılanlar İşlemleri";
+            ViewBag.v2 = "Öne Çıkan Görseller";
+            ViewBag.v3 = "Slider Öne Çıkan Görsel Listesi";
+            ViewBag.v4 = "Öne Çıkan Slider Görsel İşlemleri";
 
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7207/api/FeatureSliders");
@@ -41,9 +41,9 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         public IActionResult CreateFeatureSlider()
         {
             ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Öne Çıkarılanlar";
-            ViewBag.v3 = "Yeni Öne Çıkarılanlar Girişi";
-            ViewBag.v4 = "Öne Çıkarılanlar İşlemleri";
+            ViewBag.v2 = "Öne Çıkan Görseller";
+            ViewBag.v3 = "Slider Öne Çıkan Görsel Listesi";
+            ViewBag.v4 = "Öne Çıkan Slider Görsel İşlemleri";
             return View();
         }
 
@@ -81,9 +81,9 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateFeatureSlider(string id)
         {
             ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Öne Çıkarılanlar";
-            ViewBag.v3 = "Öne Çıkarılanlar Güncelleme Sayfası";
-            ViewBag.v4 = "Öne Çıkarılanlar İşlemleri";
+            ViewBag.v2 = "Öne Çıkan Görseller";
+            ViewBag.v3 = "Slider Öne Çıkan Görsel Listesi";
+            ViewBag.v4 = "Öne Çıkan Slider Görsel İşlemleri";
 
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7207/api/FeatureSliders/" + id);
