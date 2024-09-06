@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TrendShop.Catalog.Dtos.CategoryDtos;
 using TrendShop.Catalog.Dtos.CategoryDtos;
 using TrendShop.Catalog.Operations.CategoryServices;
 
