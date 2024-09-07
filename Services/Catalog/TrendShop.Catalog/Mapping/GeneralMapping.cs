@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TrendShop.Catalog.Dtos.BrandDtos;
 using TrendShop.Catalog.Dtos.CategoryDtos;
 using TrendShop.Catalog.Dtos.FeatureDtos;
 using TrendShop.Catalog.Dtos.FeatureSliderDtos;
@@ -26,6 +27,11 @@ namespace TrendShop.Catalog.Mapping
             CreateMap<OfferDiscount, CreateOfferDiscountDto>().ReverseMap();
             CreateMap<OfferDiscount, UpdateOfferDiscountDto>().ReverseMap();
             CreateMap<OfferDiscount, GetByIdOfferDiscountDto>().ReverseMap();
+
+            CreateMap<Brand, ResultBrandDto>().ReverseMap();
+            CreateMap<Brand, CreateBrandDto>().ReverseMap();
+            CreateMap<Brand, UpdateBrandDto>().ReverseMap();
+            CreateMap<Brand, GetByIdBrandDto>().ReverseMap();
 
             CreateMap<FeatureSlider, ResultFeatureSliderDto>().ReverseMap();
             CreateMap<FeatureSlider, CreateFeatureSliderDto>().ReverseMap();
