@@ -11,5 +11,7 @@ namespace TrendShop.Catalog.Operations.ProductServices
         Task DeleteProductAsync(string id);
         Task<GetByIdProductDto> GetByIdProductAsync(string id);
         Task<List<ResultsProductsWithCategoryDto>> GetProductsWithCategoryAsync();
+        Task<List<ResultsProductsWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string categoryId);
     }
 }
+

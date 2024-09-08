@@ -7,7 +7,6 @@ namespace TrendShop.WebUI.ViewComponents.DefaultViewComponents
     public class _CategoriesDefaultComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
-
         public _CategoriesDefaultComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;

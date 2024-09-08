@@ -67,6 +67,29 @@ namespace TrendShop.Catalog.Operations.ProductServices
             return results;
         }
 
+        public async Task<List<ResultsProductsWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string categoryId)
+        {
+            var products = await _productCollection.Find(x => x.CategoryID == categoryId).ToListAsync();
+            var results = new List<ResultsProductsWithCategoryDto>();
+
+            foreach (var product in products)
+            {
+                var category = await _categoryCollection.Find(c => c.CategoryID == product.CategoryID).FirstOrDefaultAsync();
+                var productWithCategory = new ResultsProductsWithCategoryDto
+                {
+                    ProductID = product.ProductID,
+                    ProductName = product.ProductName,
+                    ProductPrice = product.ProductPrice,
+                    ProductDescription = product.ProductDescription,
+                    ProductImageUrl = product.ProductImageUrl,
+                    CategoryID = product.CategoryID,
+                    CategoryName = category.CategoryName
+                };
+                results.Add(productWithCategory);
+            }
+            return results;
+        }
+
         public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
         {
             var values = _mapper.Map<Product>(updateProductDto);
