@@ -1,23 +1,67 @@
 ﻿@model List<ResultProductWithCategoryDto>
+
+<style>
+    /* Product container styling */
+    .product-item {
+        transition: all 0.3s ease-in-out;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        /* Add hover effect for better UX */
+        .product-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Adjust the product image to ensure proper sizing and spacing */
+    .product-img img {
+        max-height: 250px;
+        object-fit: contain; /* Ensures image is fully visible without being stretched */
+    }
+
+    /* Text alignment and spacing */
+    .product-item .text-truncate {
+        max-width: 100%;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .product-item h5, .product-item h6 {
+        margin: 0;
+    }
+
+    /* Button styling */
+    .product-action .btn {
+        border-radius: 0;
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+</style>
+<!-- Row container to align products in a grid -->
 <div class="row">
+
     @foreach (var item in Model)
     {
-        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-            <div class="product-item bg-light mb-4">
-                <div class="product-img position-relative overflow-hidden">
-                    <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="" style="height:290px;width:510px">
-                    <div class="product-action">
-                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                        <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                    </div>
+        <!-- Each product is in its own column -->
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <div class="product-item bg-light mb-4 text-center" style="border: 1px solid #ddd; padding: 15px;">
+                <!-- Product image container with fixed height -->
+                <div class="product-img position-relative overflow-hidden" style="height: 230px;">
+                    <!-- Image will cover the container without distortion -->
+                    <img class="img-fluid h-100" style="object-fit: contain; width: %;" src="@item.ProductImageUrl" alt="Product Image">
                 </div>
+
+                <!-- Product details section -->
                 <div class="text-center py-4">
-                    <a class="h6 text-decoration-none text-truncate" href="">@item.ProductName</a>
+                    <a class="h6 text-decoration-none text-truncate" href="/ProductList/ProductDetail/@item.ProductID">@item.ProductName</a>
                     <div class="d-flex align-items-center justify-content-center mt-2">
                         <h5>@item.ProductPrice ₺</h5>
-                        <h6 class="text-muted ml-2"><del>000 ₺</del></h6>
+                        <h6 class="text-muted ml-2"><del>@(((item.ProductPrice / 100) * 15) + item.ProductPrice) ₺</del></h6>
                     </div>
                     <div class="d-flex align-items-center justify-content-center mb-1">
                         <small class="fa fa-star text-primary mr-1"></small>
@@ -25,10 +69,29 @@
                         <small class="fa fa-star text-primary mr-1"></small>
                         <small class="fa fa-star text-primary mr-1"></small>
                         <small class="fa fa-star text-primary mr-1"></small>
-                        <small>(72)</small>
+                        <small>(25)</small>
                     </div>
+                </div>
+
+                <!-- Product action buttons (cart, wish list, etc.) -->
+                <div class="product-action d-flex justify-content-center">
+                    <a class="btn btn-outline-dark btn-square mx-1" href="/ShoppingCart/AddBasketItem/@item.ProductID">
+                        <i class="fa fa-shopping-cart"></i>
+                    </a>
+                    <a class="btn btn-outline-dark btn-square mx-1" href="">
+                        <i class="far fa-heart"></i>
+                    </a>
+                    <a class="btn btn-outline-dark btn-square mx-1" href="">
+                        <i class="fa fa-sync-alt"></i>
+                    </a>
+                    <a class="btn btn-outline-dark btn-square mx-1" href="">
+                        <i class="fa fa-search"></i>
+                    </a>
                 </div>
             </div>
         </div>
     }
 </div>
+
+<!-- Custom CSS for better layout and consistency -->
+
