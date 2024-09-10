@@ -7,7 +7,6 @@ namespace TrendShop.WebUI.ViewComponents.DefaultViewComponents
     public class _CarouselDefaultComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
-
         public _CarouselDefaultComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;

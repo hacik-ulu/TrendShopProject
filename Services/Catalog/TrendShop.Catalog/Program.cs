@@ -1,18 +1,16 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using System.Reflection;
-using TrendShop.Catalog.Entities;
 using TrendShop.Catalog.Operations.CategoryServices;
 using TrendShop.Catalog.Operations.ProductDetailDetailServices;
 using TrendShop.Catalog.Operations.ProductDetailServices;
-using TrendShop.Catalog.Operations.ProductImageImageServices;
-using TrendShop.Catalog.Operations.ProductImageServices;
 using TrendShop.Catalog.Operations.ProductServices;
 using TrendShop.Catalog.Services.AboutServices;
 using TrendShop.Catalog.Services.BrandServices;
 using TrendShop.Catalog.Services.FeatureServices;
 using TrendShop.Catalog.Services.FeatureSliderServices;
 using TrendShop.Catalog.Services.OfferDiscountServices;
+using TrendShop.Catalog.Services.ProductImageServices;
 using TrendShop.Catalog.Services.SpecialOfferServices;
 using TrendShop.Catalog.Settings;
 

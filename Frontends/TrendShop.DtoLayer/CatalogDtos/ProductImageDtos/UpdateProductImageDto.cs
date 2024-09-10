@@ -1,6 +1,12 @@
-﻿namespace TrendShop.Catalog.Dtos.ProductImageDtos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TrendShop.DtoLayer.CatalogDtos.ProductImageDtos
 {
-    public class ResultProductImageDto
+    public class UpdateProductImageDto
     {
         public string ProductImageID { get; set; }
         public string Image1 { get; set; }

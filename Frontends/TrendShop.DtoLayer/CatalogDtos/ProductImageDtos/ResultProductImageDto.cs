@@ -1,4 +1,10 @@
-﻿namespace TrendShop.Catalog.Dtos.ProductImageDtos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TrendShop.DtoLayer.CatalogDtos.ProductImageDtos
 {
     public class ResultProductImageDto
     {
