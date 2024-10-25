@@ -28,7 +28,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             ViewBag.v4 = "Ürün İşlemleri";
 
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7207/api/ProductDetails/" + id);
+            var responseMessage = await client.GetAsync("https://localhost:7207/api/ProductDetails/GetProductDetailByProductId?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -48,7 +48,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             var responseMessage = await client.PutAsync("https://localhost:7207/api/ProductDetails/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("ProductListWithCategory", "Index", new { area = "Admin" });
+                return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" });
             }
             return View();
         }
