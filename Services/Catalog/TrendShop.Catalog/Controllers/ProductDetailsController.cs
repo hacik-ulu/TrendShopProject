@@ -52,4 +52,3 @@ namespace TrendShop.Catalog.Controllers
     }
 }
 
-// Ürün detayları güncellendi.

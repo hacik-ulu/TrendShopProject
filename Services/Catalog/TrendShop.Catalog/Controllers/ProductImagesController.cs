@@ -58,4 +58,3 @@ namespace MultiShop.Catalog.Controllers
     }
 }
 
-// ProductImages Services edited.
