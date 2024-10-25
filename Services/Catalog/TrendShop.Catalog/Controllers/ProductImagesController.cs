@@ -58,4 +58,4 @@ namespace MultiShop.Catalog.Controllers
     }
 }
 
-// editing.
+// ProductDetails editing.
