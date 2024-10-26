@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrendShop.Comment.Context;
 
@@ -11,9 +12,10 @@ using TrendShop.Comment.Context;
 namespace TrendShop.Comment.Migrations
 {
     [DbContext(typeof(CommentContext))]
-    partial class CommentContextModelSnapshot : ModelSnapshot
+    [Migration("20241026144225_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
