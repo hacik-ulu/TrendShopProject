@@ -19,7 +19,7 @@ namespace TrendShop.WebUI.ViewComponents.ProductDetailViewComponents
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsonData); // Değişiklik burada
+                var values = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsonData); 
                 return View(values);
             }
 

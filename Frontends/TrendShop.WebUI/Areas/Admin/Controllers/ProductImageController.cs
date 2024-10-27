@@ -34,6 +34,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
         [Route("ProductImageDetail/{id}")]
         [HttpPost]
         public async Task<IActionResult> ProductImageDetail(UpdateProductImageDto updateProductImageDto)
