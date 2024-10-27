@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TrendShop.Comment.Context;
 using TrendShop.Comment.Entities;
@@ -64,5 +63,8 @@ namespace TrendShop.Comment.Controllers
             var value = _context.UserComments.Where(x => x.ProductID == id).ToList();
             return Ok(value);
         }
+
+
+
     }
 }

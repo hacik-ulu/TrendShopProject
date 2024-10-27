@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
+using TrendShop.DtoLayer.CatalogDtos.ProductDtos;
 using TrendShop.DtoLayer.CommentDtos;
 
 namespace TrendShop.WebUI.Areas.Admin.Controllers
@@ -26,16 +27,37 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             ViewBag.v4 = "Yorum İşlemleri";
 
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7293/api/Comments");
-            if (responseMessage.IsSuccessStatusCode)
+
+            var responseComments = await client.GetAsync("https://localhost:7293/api/Comments");
+            if (!responseComments.IsSuccessStatusCode)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsonData);
-                return View(values);
+                return View();
             }
 
-            return View();
+            var jsonComments = await responseComments.Content.ReadAsStringAsync();
+            var comments = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsonComments);
+
+            var responseProducts = await client.GetAsync("https://localhost:7207/api/Products");
+            if (!responseProducts.IsSuccessStatusCode)
+            {
+                return View();
+            }
+
+            var jsonProducts = await responseProducts.Content.ReadAsStringAsync();
+            var products = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonProducts);
+
+            foreach (var comment in comments)
+            {
+                var product = products.FirstOrDefault(p => p.ProductID == comment.ProductID);
+                if (product != null)
+                {
+                    comment.ProductName = product.ProductName; 
+                }
+            }
+
+            return View(comments);
         }
+
 
         [Route("DeleteComment/{id}")]
         [HttpGet]
@@ -87,3 +109,6 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         }
     }
 }
+
+
+// ProductIDye göreC
