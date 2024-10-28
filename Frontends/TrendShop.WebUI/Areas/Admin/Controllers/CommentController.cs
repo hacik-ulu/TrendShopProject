@@ -109,6 +109,3 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         }
     }
 }
-
-
-// ProductIDye göreC

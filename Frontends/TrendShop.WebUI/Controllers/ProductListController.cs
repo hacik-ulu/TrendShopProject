@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 using TrendShop.DtoLayer.CommentDtos;
 
 namespace TrendShop.WebUI.Controllers
@@ -26,12 +27,27 @@ namespace TrendShop.WebUI.Controllers
         [HttpGet]
         public PartialViewResult AddComment()
         {
-            return PartialView("Index", "Default");
+            return PartialView();
         }
 
+
         [HttpPost]
-        public IActionResult AddComment(CreateCommentDto createCommentDto)
+        public async Task<IActionResult> AddComment(CreateCommentDto createCommentDto)
         {
+            createCommentDto.ImageUrl = "test";
+            createCommentDto.Rating = 1;
+            createCommentDto.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            createCommentDto.Status = false;
+            createCommentDto.ProductID = "66c78761321ef07334453143";
+
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createCommentDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7028/api/Comments", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Default");
+            }
             return View();
         }
     }
