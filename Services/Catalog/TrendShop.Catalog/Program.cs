@@ -7,6 +7,7 @@ using TrendShop.Catalog.Operations.ProductDetailServices;
 using TrendShop.Catalog.Operations.ProductServices;
 using TrendShop.Catalog.Services.AboutServices;
 using TrendShop.Catalog.Services.BrandServices;
+using TrendShop.Catalog.Services.ContactServices;
 using TrendShop.Catalog.Services.FeatureServices;
 using TrendShop.Catalog.Services.FeatureSliderServices;
 using TrendShop.Catalog.Services.OfferDiscountServices;
@@ -33,6 +34,7 @@ builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
