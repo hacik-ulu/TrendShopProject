@@ -1,0 +1,56 @@
+﻿@model CreateLoginDto
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TrendShop Giriş Paneli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/css/opensans-font.css">
+    <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/fonts/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="~/colorlib-regform-30/css/style.css" />
+    <style>
+        .password-warning {
+            display: none;
+            color: red;
+            margin-top: 1px;
+            font-size: 12px;
+        }
+
+
+        input[type="password"]:focus + .password-warning {
+            display: block;
+        }
+    </style>
+</head>
+<body class="form-v4">
+    <div class="page-content">
+        <div class="form-v4-content">
+            <div class="form-left">
+                <h2>TrendShop E-Ticaret</h2>
+                <p class="text-1">TrendShop projemiz üzerinden e-ticaret işlemlerini gerçekleştirebilmek, indirimli ürünler ve fırsatlardan haberdar olmak adına 1 dakikada kayıt işlemini gerçekleştirin.</p>
+                <p class="text-2">Alışverişinizi gerçekleştirebilmek, sepetinize ürün eklemek ve ürün listesini görebilmek için oturum açmanız gerekmektedir. Bir hesabınız yoksa aşağıda kayıt olabilirsiniz.</p>
+                <div class="form-left-last">
+                    <a href="/Register/Index/" style="height:35px" class="account">Kayıt Ol</a>
+                </div>
+            </div>
+            <form class="form-detail" method="post">
+                <h2>TrendShop Giriş Formu</h2>
+                <div class="form-row">
+                    <label for="your_email">Kullanıcı Adı</label>
+                    <input type="text" asp-for="Username" id="your_username" class="input-text" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+                </div>
+                <div class="form-row">
+                    <label for="your_password">Şifreniz</label>
+                    <input type="password" asp-for="Password" id="your_password" class="input-text" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+                </div>
+                <div class="form-row-last">
+                    <button class="register" style="height:35px">Giriş Yap</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -39,6 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirement
 		IdentityServerVersionErrorSolution.txt = IdentityServerVersionErrorSolution.txt
 		PortainerCmd.txt = PortainerCmd.txt
 		PortNumbers.txt = PortNumbers.txt
+		UserExample.txt = UserExample.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cargo", "Cargo", "{A513E9E8-C76E-4E47-91D9-BDDF0274E55C}"
@@ -65,7 +66,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.DtoLayer", "Front
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comment", "Comment", "{D608699D-B668-46A3-AECB-630BAEDA1BE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShop.Comment", "Services\Comment\TrendShop.Comment\TrendShop.Comment.csproj", "{A85F98AB-02C0-4DE7-A11F-1C0003D3E9F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.Comment", "Services\Comment\TrendShop.Comment\TrendShop.Comment.csproj", "{A85F98AB-02C0-4DE7-A11F-1C0003D3E9F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
