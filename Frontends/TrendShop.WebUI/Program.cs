@@ -1,9 +1,25 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Jwt and Cookie Configuration
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
+{
+    // Sisteme giriþ yapmadan gelen kullanýcý olduðunda yönlendirileceði sayfa.
+    opt.LoginPath = "/Login/Index/";
+    opt.LogoutPath = "/Login/LogOut/"; // 
+    opt.AccessDeniedPath = "/Pages/AccessDenied/";
+    opt.Cookie.HttpOnly = true;
+    opt.Cookie.SameSite = SameSiteMode.Strict;
+    opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    opt.Cookie.Name = "TrendShopJwt";
+});
+
+
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
@@ -21,6 +37,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

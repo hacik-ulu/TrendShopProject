@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrendShop.DtoLayer.IdentityDtos
+namespace TrendShop.DtoLayer.IdentityDtos.LoginDto
 {
     public class CreateLoginDto
     {
