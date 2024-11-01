@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using TrendShop.WebUI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +18,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.Cookie.Name = "TrendShopJwt";
 });
 
-
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<ILoginService,LoginService>();
 
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
