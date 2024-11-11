@@ -6,7 +6,7 @@ using TrendShop.Catalog.Services.FeatureSliderServices;
 
 namespace TrendShop.Catalog.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FeatureSlidersController : ControllerBase
