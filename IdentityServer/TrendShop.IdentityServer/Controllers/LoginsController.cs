@@ -30,7 +30,7 @@ namespace TrendShop.IdentityServer.Controllers
 
             if (result.Succeeded)
             {
-                GetCheckAppUserViewModel model = new();
+                GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
                 model.Username = userLoginDto.Username;
                 model.Id = user.Id;
                 var token = JwtTokenGenerator.GenerateToken(model);
@@ -38,9 +38,8 @@ namespace TrendShop.IdentityServer.Controllers
             }
             else
             {
-                return Ok("Kullanıcı adı veya Şifre Hatalı");
+                return Ok("Kullanıcı Adı veya Şifre Hatalı");
             }
         }
-
     }
 }

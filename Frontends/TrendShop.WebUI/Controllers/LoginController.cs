@@ -7,16 +7,19 @@ using System.Text;
 using System.Text.Json;
 using TrendShop.DtoLayer.IdentityDtos.LoginDto;
 using TrendShop.WebUI.Models;
+using TrendShop.WebUI.Services;
 
 namespace TrendShop.WebUI.Controllers
 {
     public class LoginController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ILoginService _loginService;
 
-        public LoginController(IHttpClientFactory httpClientFactory)
+        public LoginController(IHttpClientFactory httpClientFactory, ILoginService loginService)
         {
             _httpClientFactory = httpClientFactory;
+            _loginService = loginService;
         }
 
         [HttpGet]
@@ -43,25 +46,32 @@ namespace TrendShop.WebUI.Controllers
                 {
                     JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
                     var token = handler.ReadJwtToken(tokenModel.Token);
+
                     var claims = token.Claims.ToList();
 
-                    if (tokenModel.Token != null)
+                    var nameIdentifierClaim = token.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                    if (nameIdentifierClaim != null)
                     {
-                        claims.Add(new Claim("trendshoptoken", tokenModel.Token));
-                        var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
-                        var authProps = new AuthenticationProperties
-                        {
-                            ExpiresUtc = tokenModel.ExpireDate,
-                            IsPersistent = true
-                        };
-
-                        await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                        return RedirectToAction("Index", "Default");
+                        claims.Add(new Claim(ClaimTypes.NameIdentifier, nameIdentifierClaim.Value)); 
                     }
+
+                    claims.Add(new Claim("trendshoptoken", tokenModel.Token));
+
+                    var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
+
+                    var authProps = new AuthenticationProperties
+                    {
+                        ExpiresUtc = tokenModel.ExpireDate,
+                        IsPersistent = true
+                    };
+
+                    await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
+
+                    var id = _loginService.GetUserId;  
+                    return RedirectToAction("Index", "Default");
                 }
             }
             return View();
-
         }
     }
 }
