@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-using TrendShop.WebUI.Services;
+using TrendShop.WebUI.Services.Concrete;
+using TrendShop.WebUI.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

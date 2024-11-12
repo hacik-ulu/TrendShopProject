@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
+using TrendShop.WebUI.Services.Interfaces;
 
-namespace TrendShop.WebUI.Services
+namespace TrendShop.WebUI.Services.Concrete
 {
     public class LoginService : ILoginService
     {

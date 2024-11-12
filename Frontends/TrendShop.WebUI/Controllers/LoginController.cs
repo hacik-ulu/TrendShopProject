@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using TrendShop.DtoLayer.IdentityDtos.LoginDto;
 using TrendShop.WebUI.Models;
-using TrendShop.WebUI.Services;
+using TrendShop.WebUI.Services.Interfaces;
 
 namespace TrendShop.WebUI.Controllers
 {
