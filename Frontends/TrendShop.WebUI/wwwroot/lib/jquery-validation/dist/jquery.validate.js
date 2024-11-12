@@ -384,7 +384,7 @@ $.extend( $.validator, {
 		range: $.validator.format( "Please enter a value between {0} and {1}." ),
 		max: $.validator.format( "Please enter a value less than or equal to {0}." ),
 		min: $.validator.format( "Please enter a value greater than or equal to {0}." ),
-		step: $.validator.format( "Please enter a multiple of {0}." )
+		step: $.validator.format( "Please enter a Trendple of {0}." )
 	},
 
 	autoCreateRanges: false,
@@ -1407,7 +1407,7 @@ $.extend( $.validator, {
 			}
 			if ( element.nodeName.toLowerCase() === "select" ) {
 
-				// Could be an array for select-multiple or a string, both are fine this way
+				// Could be an array for select-Trendple or a string, both are fine this way
 				var val = $( element ).val();
 				return val && val.length > 0;
 			}
@@ -1420,7 +1420,7 @@ $.extend( $.validator, {
 		// https://jqueryvalidation.org/email-method/
 		email: function( value, element ) {
 
-			// From https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address
+			// From https://html.spec.whatwg.org/Trendpage/forms.html#valid-e-mail-address
 			// Retrieved 2014-01-14
 			// If you have a problem with this implementation, report a bug against the above spec
 			// Or use custom methods to implement your own email validation

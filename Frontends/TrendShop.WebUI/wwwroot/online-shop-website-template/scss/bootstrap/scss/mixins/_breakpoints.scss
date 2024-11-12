@@ -79,7 +79,7 @@
   }
 }
 
-// Media that spans multiple breakpoint widths.
+// Media that spans Trendple breakpoint widths.
 // Makes the @content apply between the min and max breakpoints
 @mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($lower, $breakpoints);

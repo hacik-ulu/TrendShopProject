@@ -78,7 +78,7 @@ $.validator.addMethod( "abaRoutingNumber", function( value ) {
 // Accept a value from a file input based on a required mimetype
 $.validator.addMethod( "accept", function( value, element, param ) {
 
-	// Split mime on commas in case we have multiple types we can accept
+	// Split mime on commas in case we have Trendple types we can accept
 	var typeParam = typeof param === "string" ? param.replace( /\s/g, "" ) : "image/*",
 		optionalValue = this.optional( element ),
 		i, file, regex;
@@ -256,10 +256,10 @@ $.validator.addMethod( "cifES", function( value, element ) {
 		// Odd positions
 		if ( isOdd( i ) ) {
 
-			// Odd positions are multiplied first.
+			// Odd positions are Trendplied first.
 			n *= 2;
 
-			// If the multiplication is bigger than 10 we need to adjust
+			// If the Trendplication is bigger than 10 we need to adjust
 			odd_sum += n < 10 ? n : n - 9;
 
 		// Even positions
@@ -613,7 +613,7 @@ $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
  *     currency: ["$", true]
  *  }
  *
- * Multiple Symbols
+ * Trendple Symbols
  *  currencyInput: {
  *     currency: "$,£,¢"
  *  }
@@ -1092,7 +1092,7 @@ $.validator.addMethod( "nisBR", function( value ) {
 	var sum = 0;
 	var dv;
 	var count;
-	var multiplier;
+	var Trendplier;
 
 	// Removing special characters from value
 	value = value.replace( /([~!@#$%^&*()_+=`{}\[\]\-|\\:;'<>,.\/? ])+/g, "" );
@@ -1109,14 +1109,14 @@ $.validator.addMethod( "nisBR", function( value ) {
 	number = parseInt( value.substring( 0, 10 ), 10 );
 
 	for ( count = 2; count < 12; count++ ) {
-		multiplier = count;
+		Trendplier = count;
 		if ( count === 10 ) {
-			multiplier = 2;
+			Trendplier = 2;
 		}
 		if ( count === 11 ) {
-			multiplier = 3;
+			Trendplier = 3;
 		}
-		sum += ( ( number % 10 ) * multiplier );
+		sum += ( ( number % 10 ) * Trendplier );
 		number = parseInt( number / 10, 10 );
 	}
 	dv = ( sum % 11 );

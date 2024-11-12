@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using TrendShop.WebUI.Services.Concrete;
 using TrendShop.WebUI.Services.Interfaces;
+using TrendShop.WebUI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,9 +21,22 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.Cookie.Name = "TrendShopJwt";
 });
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+    AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
+    {
+        opt.LoginPath = "/Login/Index/";
+        opt.ExpireTimeSpan = TimeSpan.FromDays(5);
+        opt.Cookie.Name = "TrendShopCookie";
+        opt.SlidingExpiration = true;
+    });
+
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddScoped<ILoginService,LoginService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddHttpClient<IIdentityService, IdentityService>();
+
+builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
+
 
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();

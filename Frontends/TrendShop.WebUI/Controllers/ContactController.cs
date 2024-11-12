@@ -28,7 +28,7 @@ namespace TrendShop.WebUI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createContactDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7207/api/Contacs", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7207/api/Contacts", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Default");

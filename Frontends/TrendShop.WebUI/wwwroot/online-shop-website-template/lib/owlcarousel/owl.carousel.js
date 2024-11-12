@@ -1135,7 +1135,7 @@
 	 * @returns {Number|Array.<Number>} - The coordinate of the item in pixel or all coordinates.
 	 */
 	Owl.prototype.coordinates = function(position) {
-		var multiplier = 1,
+		var Trendplier = 1,
 			newPosition = position - 1,
 			coordinate;
 
@@ -1147,12 +1147,12 @@
 
 		if (this.settings.center) {
 			if (this.settings.rtl) {
-				multiplier = -1;
+				Trendplier = -1;
 				newPosition = position + 1;
 			}
 
 			coordinate = this._coordinates[position];
-			coordinate += (this.width() - coordinate + (this._coordinates[newPosition] || 0)) / 2 * multiplier;
+			coordinate += (this.width() - coordinate + (this._coordinates[newPosition] || 0)) / 2 * Trendplier;
 		} else {
 			coordinate = this._coordinates[newPosition] || 0;
 		}

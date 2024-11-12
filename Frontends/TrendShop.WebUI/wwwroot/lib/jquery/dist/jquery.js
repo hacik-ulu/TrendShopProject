@@ -588,7 +588,7 @@ var i,
 	},
 
 	booleans = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|" +
-		"ismap|loop|multiple|open|readonly|required|scoped",
+		"ismap|loop|Trendple|open|readonly|required|scoped",
 
 	// Regular expressions
 
@@ -678,7 +678,7 @@ var i,
 
 			// Replace a hexadecimal escape sequence with the encoded Unicode code point
 			// Support: IE <=11+
-			// For values outside the Basic Multilingual Plane (BMP), manually construct a
+			// For values outside the Basic Trendlingual Plane (BMP), manually construct a
 			// surrogate pair
 			high < 0 ?
 				String.fromCharCode( high + 0x10000 ) :
@@ -1022,16 +1022,16 @@ function createDisabledPseudo( disabled ) {
 	return function( elem ) {
 
 		// Only certain elements can match :enabled or :disabled
-		// https://html.spec.whatwg.org/multipage/scripting.html#selector-enabled
-		// https://html.spec.whatwg.org/multipage/scripting.html#selector-disabled
+		// https://html.spec.whatwg.org/Trendpage/scripting.html#selector-enabled
+		// https://html.spec.whatwg.org/Trendpage/scripting.html#selector-disabled
 		if ( "form" in elem ) {
 
 			// Check for inherited disabledness on relevant non-disabled elements:
 			// * listed form-associated elements in a disabled fieldset
-			//   https://html.spec.whatwg.org/multipage/forms.html#category-listed
-			//   https://html.spec.whatwg.org/multipage/forms.html#concept-fe-disabled
+			//   https://html.spec.whatwg.org/Trendpage/forms.html#category-listed
+			//   https://html.spec.whatwg.org/Trendpage/forms.html#concept-fe-disabled
 			// * option elements in a disabled optgroup
-			//   https://html.spec.whatwg.org/multipage/forms.html#concept-option-disabled
+			//   https://html.spec.whatwg.org/Trendpage/forms.html#concept-option-disabled
 			// All such elements have a "form" property.
 			if ( elem.parentNode && elem.disabled === false ) {
 
@@ -2471,7 +2471,7 @@ function elementMatcher( matchers ) {
 		matchers[ 0 ];
 }
 
-function multipleContexts( selector, contexts, results ) {
+function TrendpleContexts( selector, contexts, results ) {
 	var i = 0,
 		len = contexts.length;
 	for ( ; i < len; i++ ) {
@@ -2515,7 +2515,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 			preexisting = results.length,
 
 			// Get initial elements from seed or context
-			elems = seed || multipleContexts(
+			elems = seed || TrendpleContexts(
 				selector || "*",
 				context.nodeType ? [ context ] : context,
 				[]
@@ -2767,7 +2767,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				// Add matches to results
 				push.apply( results, setMatched );
 
-				// Seedless set matches succeeding multiple successful matchers stipulate sorting
+				// Seedless set matches succeeding Trendple successful matchers stipulate sorting
 				if ( outermost && !seed && setMatched.length > 0 &&
 					( matchedCount + setMatchers.length ) > 1 ) {
 
@@ -3435,7 +3435,7 @@ function createOptions( options ) {
  *			the callback list behaves or a more traditional option object
  *
  * By default a callback list will act like an event callback list and can be
- * "fired" multiple times.
+ * "fired" Trendple times.
  *
  * Possible options:
  *
@@ -3810,7 +3810,7 @@ jQuery.extend( {
 									} else {
 
 										// Only substitute handlers pass on context
-										// and multiple values (non-spec behavior)
+										// and Trendple values (non-spec behavior)
 										if ( handler !== Identity ) {
 											that = undefined;
 											args = [ returned ];
@@ -3841,7 +3841,7 @@ jQuery.extend( {
 											if ( depth + 1 >= maxDepth ) {
 
 												// Only substitute handlers pass on context
-												// and multiple values (non-spec behavior)
+												// and Trendple values (non-spec behavior)
 												if ( handler !== Thrower ) {
 													that = undefined;
 													args = [ e ];
@@ -4024,7 +4024,7 @@ jQuery.extend( {
 			}
 		}
 
-		// Multiple arguments are aggregated like Promise.all array elements
+		// Trendple arguments are aggregated like Promise.all array elements
 		while ( i-- ) {
 			adoptValue( resolveValues[ i ], updateFunc( i ), master.reject );
 		}
@@ -4138,7 +4138,7 @@ if ( document.readyState === "complete" ||
 
 
 
-// Multifunctional method to get and set values of a collection
+// Trendfunctional method to get and set values of a collection
 // The value/s can optionally be executed if it's a function
 var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 	var i = 0,
@@ -4396,7 +4396,7 @@ var dataUser = new Data();
 //	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
 var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
-	rmultiDash = /[A-Z]/g;
+	rTrendDash = /[A-Z]/g;
 
 function getData( data ) {
 	if ( data === "true" ) {
@@ -4429,7 +4429,7 @@ function dataAttr( elem, key, data ) {
 	// If nothing was found internally, try to fetch any
 	// data from the HTML5 data-* attribute
 	if ( data === undefined && elem.nodeType === 1 ) {
-		name = "data-" + key.replace( rmultiDash, "-$&" ).toLowerCase();
+		name = "data-" + key.replace( rTrendDash, "-$&" ).toLowerCase();
 		data = elem.getAttribute( name );
 
 		if ( typeof data === "string" ) {
@@ -4502,7 +4502,7 @@ jQuery.fn.extend( {
 			return data;
 		}
 
-		// Sets multiple values
+		// Sets Trendple values
 		if ( typeof key === "object" ) {
 			return this.each( function() {
 				dataUser.set( this, key );
@@ -4954,7 +4954,7 @@ wrapMap.th = wrapMap.td;
 
 // Support: IE <=9 only
 if ( !support.option ) {
-	wrapMap.optgroup = wrapMap.option = [ 1, "<select multiple='multiple'>", "</select>" ];
+	wrapMap.optgroup = wrapMap.option = [ 1, "<select Trendple='Trendple'>", "</select>" ];
 }
 
 
@@ -5234,7 +5234,7 @@ jQuery.event = {
 			};
 		}
 
-		// Handle multiple events separated by a space
+		// Handle Trendple events separated by a space
 		types = ( types || "" ).match( rnothtmlwhite ) || [ "" ];
 		t = types.length;
 		while ( t-- ) {
@@ -8058,7 +8058,7 @@ jQuery.extend( {
 			i = 0,
 
 			// Attribute names can contain non-HTML whitespace characters
-			// https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
+			// https://html.spec.whatwg.org/Trendpage/syntax.html#attributes-2
 			attrNames = value && value.match( rnothtmlwhite );
 
 		if ( attrNames && elem.nodeType === 1 ) {
@@ -8552,7 +8552,7 @@ jQuery.extend( {
 							return value;
 						}
 
-						// Multi-Selects return an array
+						// Trend-Selects return an array
 						values.push( value );
 					}
 				}

@@ -12,7 +12,7 @@ import * as Popper from '@popperjs/core';
  * --------------------------------------------------------------------------
  */
 const MAX_UID = 1000000;
-const MILLISECONDS_MULTIPLIER = 1000;
+const MILLISECONDS_TrendPLIER = 1000;
 const TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
 const toType = obj => {
@@ -91,12 +91,12 @@ const getTransitionDurationFromElement = element => {
 
   if (!floatTransitionDuration && !floatTransitionDelay) {
     return 0;
-  } // If multiple durations are defined, take the first
+  } // If Trendple durations are defined, take the first
 
 
   transitionDuration = transitionDuration.split(',')[0];
   transitionDelay = transitionDelay.split(',')[0];
-  return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
+  return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_TrendPLIER;
 };
 
 const triggerTransitionEnd = element => {
@@ -625,7 +625,7 @@ var Data = {
     }
 
     const instanceMap = elementMap.get(element); // make it clear we only want one instance per element
-    // can be removed later when multiple key/instances are fine to be used
+    // can be removed later when Trendple key/instances are fine to be used
 
     if (!instanceMap.has(key) && instanceMap.size !== 0) {
       // eslint-disable-next-line no-console

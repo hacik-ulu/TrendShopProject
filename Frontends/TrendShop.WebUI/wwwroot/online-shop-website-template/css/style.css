@@ -1994,7 +1994,7 @@ select.form-control:focus::-ms-value {
   line-height: 1.5;
 }
 
-select.form-control[size], select.form-control[multiple] {
+select.form-control[size], select.form-control[Trendple] {
   height: auto;
 }
 
@@ -3655,7 +3655,7 @@ input[type="button"].btn-block {
   background-color: #fff;
 }
 
-.custom-select[multiple], .custom-select[size]:not([size="1"]) {
+.custom-select[Trendple], .custom-select[size]:not([size="1"]) {
   height: auto;
   padding-right: 0.75rem;
   background-image: none;

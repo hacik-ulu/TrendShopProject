@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using System.Text;
 using TrendShop.DtoLayer.CatalogDtos.ProductImageDtos;
 
-namespace MultiShop.WebUI.Areas.Admin.Controllers
+namespace TrendShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [AllowAnonymous]

@@ -731,7 +731,7 @@ $.extend(Countdown.prototype, {
 		extractPeriod(M, 60);
 		extractPeriod(S, 1);
 		if (diff > 0 && !inst._since) { // Round up if left overs
-			var multiplier = [1, 12, 4.3482, 7, 24, 60, 60];
+			var Trendplier = [1, 12, 4.3482, 7, 24, 60, 60];
 			var lastShown = S;
 			var max = 1;
 			for (var period = S; period >= Y; period--) {
@@ -747,7 +747,7 @@ $.extend(Countdown.prototype, {
 						max = 1;
 					}
 				}
-				max *= multiplier[period];
+				max *= Trendplier[period];
 			}
 		}
 		if (significant) { // Zero out insignificant periods

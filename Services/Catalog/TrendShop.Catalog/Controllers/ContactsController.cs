@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TrendShop.Catalog.Dtos.ContactDtos;
 using TrendShop.Catalog.Services.ContactServices;
@@ -9,11 +8,11 @@ namespace TrendShop.Catalog.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class ContacsController : ControllerBase
+    public class ContactsController : ControllerBase
     {
         private readonly IContactService _contactService;
 
-        public ContacsController(IContactService contactService)
+        public ContactsController(IContactService contactService)
         {
             _contactService = contactService;
         }

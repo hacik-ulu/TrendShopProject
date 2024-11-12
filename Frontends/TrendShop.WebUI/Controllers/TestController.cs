@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Net.Http.Headers;
 using TrendShop.DtoLayer.CatalogDtos.CategoryDtos;
 
 namespace TrendShop.WebUI.Controllers
@@ -14,10 +15,10 @@ namespace TrendShop.WebUI.Controllers
         }
         public async Task<IActionResult> Index()
         {
-
             // kullanıcı türünü belirlemek ve access token almak için api'ye post ediyoruz.
             // tokenı UI'da göüntülemeye çalışıyoruz.
-            string token;
+
+            string token = "";
             using (var httpClient = new HttpClient())
             {
                 var request = new HttpRequestMessage
@@ -34,7 +35,7 @@ namespace TrendShop.WebUI.Controllers
 
                 using (var response = await httpClient.SendAsync(request))
                 {
-                    if (response.IsSuccessStatusCode) 
+                    if (response.IsSuccessStatusCode)
                     {
                         var content = await response.Content.ReadAsStringAsync();
                         var tokenResponse = JObject.Parse(content);
@@ -43,8 +44,9 @@ namespace TrendShop.WebUI.Controllers
                 };
             }
 
-
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             var responseMessage = await client.GetAsync("https://localhost:7207/api/Categories");
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -52,7 +54,11 @@ namespace TrendShop.WebUI.Controllers
                 var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
                 return View(values);
             }
+            return View();
+        }
 
+        public IActionResult Deneme1()
+        {
             return View();
         }
     }

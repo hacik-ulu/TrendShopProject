@@ -2312,7 +2312,7 @@
     $.fn[pluginName] = function (options) {
         // Call Mapael on each element
         return this.each(function () {
-            // Avoid leaking problem on multiple instanciation by removing an old mapael object on a container
+            // Avoid leaking problem on Trendple instanciation by removing an old mapael object on a container
             if ($.data(this, pluginName)) {
                 $.data(this, pluginName).destroy();
             }
