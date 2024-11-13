@@ -1,0 +1,18 @@
+Gateway --> Serverlarýmýza güvenli bir þekilde istek atmasýný saðlamak istiyorsak bir Api Gateway kullanabiliriz.(Daðýtýcý görevinde)
+Client tarafýndan gelen isteði ilgili servislere yönlendirir.
+Örnek : Kategorileri görmek isteyen istemciyi kategori servisine yönlendirir.
+
+Gateway ile Neler yapýlabilir ? 
+-----------------------------------
+1)Authentication - Authorization
+2)Logging --> servislere gelen request ve response'larý log(kayýt) altýna alabiliriz.
+3)Response Caching --> API gateway ile endpointe gelen istekleri cachleyerek istek süresini düþürürüz.
+4)Routing --> Yönlendirme
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+Ocelot Nedir ?
+--------------
+Ocelot API'leri belirli bir sýrada çalýþtýran ve yöneten ara katman yazýlýmýdýr.

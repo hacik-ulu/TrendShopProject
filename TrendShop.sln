@@ -36,6 +36,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{97F96600-9998-4979-ABB0-371C37488E9A}"
 	ProjectSection(SolutionItems) = preProject
 		DatabaseTypes.txt = DatabaseTypes.txt
+		Gateway&Ocelot.txt = Gateway&Ocelot.txt
 		IdentityServerVersionErrorSolution.txt = IdentityServerVersionErrorSolution.txt
 		PortainerCmd.txt = PortainerCmd.txt
 		PortNumbers.txt = PortNumbers.txt
@@ -68,6 +69,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comment", "Comment", "{D608699D-B668-46A3-AECB-630BAEDA1BE0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShop.Comment", "Services\Comment\TrendShop.Comment\TrendShop.Comment.csproj", "{A85F98AB-02C0-4DE7-A11F-1C0003D3E9F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{2EB85285-8E02-4EE5-BD5A-F79148A04B11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RapidApi", "RapidApi", "{05450DFE-432C-4D0A-A675-4C86D45806A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShopProject.OcelotGateway", "ApiGateway\TrendShopProject.OcelotGateway\TrendShopProject.OcelotGateway.csproj", "{07BD28B5-147E-4890-94EC-00854582ACAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,6 +146,10 @@ Global
 		{A85F98AB-02C0-4DE7-A11F-1C0003D3E9F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A85F98AB-02C0-4DE7-A11F-1C0003D3E9F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A85F98AB-02C0-4DE7-A11F-1C0003D3E9F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07BD28B5-147E-4890-94EC-00854582ACAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07BD28B5-147E-4890-94EC-00854582ACAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07BD28B5-147E-4890-94EC-00854582ACAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07BD28B5-147E-4890-94EC-00854582ACAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -169,6 +180,7 @@ Global
 		{43E5D79A-1BB8-4736-9F15-ADE50461C069} = {5AA9A069-5AB0-45DF-93AE-4195DC30FC0F}
 		{D608699D-B668-46A3-AECB-630BAEDA1BE0} = {04E703A8-7D89-4F8B-BFDF-0CF57F4DAEDF}
 		{A85F98AB-02C0-4DE7-A11F-1C0003D3E9F7} = {D608699D-B668-46A3-AECB-630BAEDA1BE0}
+		{07BD28B5-147E-4890-94EC-00854582ACAE} = {2EB85285-8E02-4EE5-BD5A-F79148A04B11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4028C25B-4AFB-4428-A4A4-8E385B4F18BC}
