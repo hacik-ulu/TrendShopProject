@@ -12,9 +12,9 @@
     "TrendShopProject.Images": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7114;http://localhost:5199",
+      "applicationUrl": "http://localhost:7214",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
