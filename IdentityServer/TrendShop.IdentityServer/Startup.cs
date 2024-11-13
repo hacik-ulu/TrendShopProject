@@ -3,8 +3,6 @@
 
 
 using IdentityServer4;
-using TrendShop.IdentityServer.Data;
-using TrendShop.IdentityServer.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TrendShop.IdentityServer;
+using TrendShop.IdentityServer.Data;
+using TrendShop.IdentityServer.Models;
 
 namespace TrendShop.IdentityServer
 {
@@ -29,6 +30,7 @@ namespace TrendShop.IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLocalApiAuthentication();
+
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -37,7 +39,6 @@ namespace TrendShop.IdentityServer
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
 
             var builder = services.AddIdentityServer(options =>
             {
@@ -71,6 +72,7 @@ namespace TrendShop.IdentityServer
                 });
         }
 
+        [System.Obsolete]
         public void Configure(IApplicationBuilder app)
         {
             if (Environment.IsDevelopment())

@@ -38,6 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirement
 		DatabaseTypes.txt = DatabaseTypes.txt
 		Gateway&Ocelot.txt = Gateway&Ocelot.txt
 		IdentityServerVersionErrorSolution.txt = IdentityServerVersionErrorSolution.txt
+		OcelotCodeExample.txt = OcelotCodeExample.txt
 		OcelotLink.txt = OcelotLink.txt
 		PortainerCmd.txt = PortainerCmd.txt
 		PortNumbers.txt = PortNumbers.txt
@@ -75,15 +76,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RapidApi", "RapidApi", "{05450DFE-432C-4D0A-A675-4C86D45806A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShopProject.OcelotGateway", "ApiGateway\TrendShopProject.OcelotGateway\TrendShopProject.OcelotGateway.csproj", "{07BD28B5-147E-4890-94EC-00854582ACAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShopProject.OcelotGateway", "ApiGateway\TrendShopProject.OcelotGateway\TrendShopProject.OcelotGateway.csproj", "{07BD28B5-147E-4890-94EC-00854582ACAE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{A22C5BD0-3C24-4608-B77B-2AF6E3264BDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShopProject.Payment", "Services\Payment\TrendShopProject.Payment\TrendShopProject.Payment.csproj", "{9A2D61DA-C972-4668-8612-AB22AFAA2308}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShopProject.Payment", "Services\Payment\TrendShopProject.Payment\TrendShopProject.Payment.csproj", "{9A2D61DA-C972-4668-8612-AB22AFAA2308}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{99671008-7F97-46E2-B21A-A03CB121EA19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShopProject.Images", "Services\Images\TrendShopProject.Images\TrendShopProject.Images.csproj", "{44670FA2-C51D-4383-A81A-F566CAFF3580}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShopProject.Images", "Services\Images\TrendShopProject.Images\TrendShopProject.Images.csproj", "{44670FA2-C51D-4383-A81A-F566CAFF3580}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
