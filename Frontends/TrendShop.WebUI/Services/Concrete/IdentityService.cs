@@ -67,11 +67,13 @@ namespace TrendShop.WebUI.Services.Concrete
                 }
             };
 
+            // Kullanıcının kimlik doğrulamasını alıyor.
             var result = await _httpContextAccessor.HttpContext.AuthenticateAsync();
+ 
+            var properties = result.Properties; // mevcut oturumun özellikleri alınıyor
+            properties.StoreTokens(authenticationToken); // StoreTokens metodu ile yeni bir authenticationToken eklenir veya güncellenir.
 
-            var properties = result.Properties;
-            properties.StoreTokens(authenticationToken);
-
+            // Oturum yeniden başlatılıyor.
             await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, result.Principal, properties);
 
             return true;
