@@ -12,16 +12,16 @@ namespace TrendShop.WebUI.Handlers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IIdentityService _identityService;
 
-        public ResourceOwnerPasswordTokenHandler(IIdentityService identityService)
+        public ResourceOwnerPasswordTokenHandler(IHttpContextAccessor httpContextAccessor, IIdentityService identityService)
         {
+            _httpContextAccessor = httpContextAccessor;
             _identityService = identityService;
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            // Giriş yapan kullanıcının tokenının alınması.
             var accessToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken); // tokenın geçerliliği kontrol ediliyor.
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             var response = await base.SendAsync(request, cancellationToken);
 
             if (response.StatusCode == HttpStatusCode.Unauthorized)
@@ -30,17 +30,16 @@ namespace TrendShop.WebUI.Handlers
 
                 if (tokenResponse != null)
                 {
-                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken); // tokenın geçerliliği kontrol ediliyor.
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                     response = await base.SendAsync(request, cancellationToken);
                 }
             }
 
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                // hata mesajı dön
+                //hata mesajı
             }
             return response;
-
         }
     }
 }

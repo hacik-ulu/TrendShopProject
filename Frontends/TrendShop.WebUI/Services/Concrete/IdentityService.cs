@@ -17,7 +17,7 @@ namespace TrendShop.WebUI.Services.Concrete
         private readonly ClientSettings _clientSettings;
         private readonly ServiceApiSettings _serviceApiSettings;
 
-        public IdentityService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<ClientSettings> clientSettings,IOptions<ServiceApiSettings> serviceApiSettings)
+        public IdentityService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<ClientSettings> clientSettings, IOptions<ServiceApiSettings> serviceApiSettings)
         {
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
@@ -67,13 +67,11 @@ namespace TrendShop.WebUI.Services.Concrete
                 }
             };
 
-            // Kullanıcının kimlik doğrulamasını alıyor.
             var result = await _httpContextAccessor.HttpContext.AuthenticateAsync();
- 
-            var properties = result.Properties; // mevcut oturumun özellikleri alınıyor
-            properties.StoreTokens(authenticationToken); // StoreTokens metodu ile yeni bir authenticationToken eklenir veya güncellenir.
 
-            // Oturum yeniden başlatılıyor.
+            var properties = result.Properties;
+            properties.StoreTokens(authenticationToken);
+
             await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, result.Principal, properties);
 
             return true;

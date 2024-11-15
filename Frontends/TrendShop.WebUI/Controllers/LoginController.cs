@@ -45,7 +45,7 @@ namespace TrendShop.WebUI.Controllers
             signInDto.Username = "ayse02";
             signInDto.Password = "123456789Aa.";
             await _identityService.SignIn(signInDto);
-            return RedirectToAction("Index","Test");
+            return RedirectToAction("Index","User");
         }
     }
 }
