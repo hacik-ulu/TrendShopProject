@@ -21,7 +21,7 @@ namespace TrendShop.WebUI.Handlers
         {
             // Giriş yapan kullanıcının tokenının alınması.
             var accessToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken) // tokenın geçerliliği kontrol ediliyor.
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken); // tokenın geçerliliği kontrol ediliyor.
             var response = await base.SendAsync(request, cancellationToken);
 
             if (response.StatusCode == HttpStatusCode.Unauthorized)
@@ -30,7 +30,7 @@ namespace TrendShop.WebUI.Handlers
 
                 if (tokenResponse != null)
                 {
-                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken) // tokenın geçerliliği kontrol ediliyor.
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken); // tokenın geçerliliği kontrol ediliyor.
                     response = await base.SendAsync(request, cancellationToken);
                 }
             }

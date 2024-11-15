@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using TrendShop.WebUI.Handlers;
 using TrendShop.WebUI.Services.Concrete;
 using TrendShop.WebUI.Services.Interfaces;
 using TrendShop.WebUI.Settings;
@@ -38,6 +39,13 @@ builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
 
+builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+
+var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+builder.Services.AddHttpClient<IUserService, UserService>(opt =>
+{
+    opt.BaseAddress = new Uri(values.IdentityServerUrl);
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
