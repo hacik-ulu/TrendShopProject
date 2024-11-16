@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using TrendShop.WebUI.Handlers;
+using TrendShop.WebUI.Services.CatalogServices.CategoryServices;
 using TrendShop.WebUI.Services.Concrete;
 using TrendShop.WebUI.Services.Interfaces;
 using TrendShop.WebUI.Settings;
@@ -46,6 +47,11 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+});
 
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
