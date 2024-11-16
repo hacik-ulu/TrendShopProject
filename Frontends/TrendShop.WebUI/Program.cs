@@ -32,6 +32,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         opt.SlidingExpiration = true;
     });
 
+builder.Services.AddAccessTokenManagement();
+
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<ILoginService, LoginService>();
