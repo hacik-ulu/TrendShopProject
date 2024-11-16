@@ -15,7 +15,7 @@ namespace TrendShop.WebUI.Handlers
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            // üye olmadan devam etmek isteyen kullanıcılar için token alınması senaryosu.
+            // üye olmayan kullanıcılara özgü token işlemi.
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", await _clientCredentialTokenService.GetToken());
             var response = await base.SendAsync(request, cancellationToken);
             if (response.StatusCode == HttpStatusCode.Unauthorized)
