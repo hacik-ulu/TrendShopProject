@@ -4,7 +4,7 @@ using TrendShop.DtoLayer.CatalogDtos.ProductDtos;
 using TrendShop.WebUI.Services.CatalogServices.CategoryServices;
 using TrendShop.WebUI.Services.CatalogServices.ProductServices;
 
-namespace TrendShop.WebUI.Areas.Admin.Controllers
+namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/Product")]
@@ -22,7 +22,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Ürünler";
             ViewBag.v3 = "Ürün Listesi";
-            ViewBag.v4 = "Ürün İşlemleri";
+            ViewBag.v0 = "Ürün İşlemleri";
         }
 
         [Route("Index")]
@@ -37,6 +37,15 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> ProductListWithCategory()
         {
             ProductViewBagList();
+
+            //var client = _httpClientFactory.CreateClient();
+            //var responseMessage = await client.GetAsync("https://localhost:7070/api/Products/ProductListWithCategory");
+            //if (responseMessage.IsSuccessStatusCode)
+            //{
+            //    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            //    var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
+            //    return View(values);
+            //}
             return View();
         }
 
