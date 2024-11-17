@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
+using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using System.Globalization;
 using TrendShop.WebUI.Handlers;
 using TrendShop.WebUI.Services.CatalogServices.CategoryServices;
 using TrendShop.WebUI.Services.CatalogServices.ProductServices;
+using TrendShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using TrendShop.WebUI.Services.Concrete;
 using TrendShop.WebUI.Services.Interfaces;
 using TrendShop.WebUI.Settings;
@@ -57,6 +59,9 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+
+#region UI Services
+
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
@@ -66,6 +71,15 @@ builder.Services.AddHttpClient<IProductService, ProductService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<ISpecialOfferService, SpecialOfferService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+
+#endregion
+
 
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
