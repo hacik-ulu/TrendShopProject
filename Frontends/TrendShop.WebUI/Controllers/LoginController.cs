@@ -32,9 +32,9 @@ namespace TrendShop.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(CreateLoginDto createLoginDto)
+        public async Task<IActionResult> Index(SignInDto signInDto)
         {
-            
+            await _identityService.SignIn(signInDto);
             return View();
         }
 
