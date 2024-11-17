@@ -19,7 +19,23 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Özel Teklifler";
             ViewBag.v3 = "Özel Teklif ve Günün İndirim Listesi";
-            ViewBag.v0 = "Kategori İşlemleri";
+            ViewBag.v4 = "Kategori İşlemleri";
+        }
+
+        void CreateSpecialOfferViewBagList()
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Özel Teklifler";
+            ViewBag.v3 = "Özel Teklif ve Günün İndirim Ekleme Sayfası";
+            ViewBag.v4 = "Kategori İşlemleri";
+        }
+
+        void UpdateSpecialOfferViewBagList()
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Özel Teklifler";
+            ViewBag.v3 = "Özel Teklif ve Günün İndirim Güncelleme Sayfası";
+            ViewBag.v4 = "Kategori İşlemleri";
         }
 
         [Route("Index")]

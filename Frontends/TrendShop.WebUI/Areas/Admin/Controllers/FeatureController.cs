@@ -18,7 +18,23 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkan Alanlar";
             ViewBag.v3 = "Öne Çıkan Alan Listesi";
-            ViewBag.v0 = "Ana Sayfa Öne Çıkan Alan İşlemleri";
+            ViewBag.v4 = "Ana Sayfa Öne Çıkan Alan İşlemleri";
+        }
+
+        void CreateFeatureViewBagList()
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Öne Çıkan Alanlar";
+            ViewBag.v3 = "Öne Çıkan Alan Ekleme Sayfası";
+            ViewBag.v4 = "Ana Sayfa Öne Çıkan Alan İşlemleri";
+        }
+
+        void UpdateFeatureViewBagList()
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Öne Çıkan Alanlar";
+            ViewBag.v3 = "Öne Çıkan Alan Güncelleme Sayfası";
+            ViewBag.v4 = "Ana Sayfa Öne Çıkan Alan İşlemleri";
         }
 
         [Route("Index")]
