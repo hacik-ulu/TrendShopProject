@@ -18,7 +18,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "İndirim Teklifleri";
             ViewBag.v3 = "İndirim Teklif Listesi";
-            ViewBag.v4 = "Kategori İşlemleri";
+            ViewBag.v4 = "İndirim Teklifi İşlemleri";
         }
 
         void CreateOfferDiscountViewBagList()
@@ -26,7 +26,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "İndirim Teklifleri";
             ViewBag.v3 = "İndirim Teklif Ekleme Sayfası";
-            ViewBag.v4 = "Kategori İşlemleri";
+            ViewBag.v4 = "İndirim Teklifi İşlemleri";
         }
 
         void UpdateOfferDiscountViewBagList()
@@ -34,7 +34,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "İndirim Teklifleri";
             ViewBag.v3 = "İndirim Teklif Güncelleme Sayfası";
-            ViewBag.v4 = "Kategori İşlemleri";
+            ViewBag.v4 = "İndirim Teklifi İşlemleri";
         }
 
         [Route("Index")]

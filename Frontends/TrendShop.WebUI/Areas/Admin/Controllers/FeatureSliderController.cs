@@ -18,7 +18,23 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkan Görseller";
             ViewBag.v3 = "Slider Öne Çıkan Görsel Listesi";
-            ViewBag.v0 = "Öne Çıkan Slider Görsel İşlemleri";
+            ViewBag.v4 = "Öne Çıkan Slider Görsel İşlemleri";
+        }
+
+        void CreateFeatureSliderViewBaglist()
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Öne Çıkan Görseller";
+            ViewBag.v3 = "Slider Öne Çıkan Görsel Ekleme Sayfası";
+            ViewBag.v4 = "Öne Çıkan Slider Görsel İşlemleri";
+        }
+
+        void UpdateFeatureSliderViewBaglist()
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Öne Çıkan Görseller";
+            ViewBag.v3 = "Slider Öne Çıkan Görsel Güncelleme Sayfası";
+            ViewBag.v4 = "Öne Çıkan Slider Görsel İşlemleri";
         }
 
         [Route("Index")]
@@ -33,7 +49,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         [Route("CreateFeatureSlider")]
         public IActionResult CreateFeatureSlider()
         {
-            FeatureSliderViewBaglist();
+            CreateFeatureSliderViewBaglist();
             return View();
         }
 
@@ -56,7 +72,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateFeatureSlider(string id)
         {
-            FeatureSliderViewBaglist();
+            UpdateFeatureSliderViewBaglist();
             var values = await _featureSliderService.GetByIdFeatureSliderAsync(id);
             return View(values);
         }
@@ -65,7 +81,6 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateFeatureSlider(UpdateFeatureSliderDto updateFeatureSliderDto)
         {
-
             await _featureSliderService.UpdateFeatureSliderAsync(updateFeatureSliderDto);
             return RedirectToAction("Index", "FeatureSlider", new { area = "Admin" });
         }

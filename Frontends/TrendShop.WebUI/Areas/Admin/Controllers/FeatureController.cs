@@ -49,7 +49,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateFeature")]
         public IActionResult CreateFeature()
         {
-            FeatureViewBagList();
+            CreateFeatureViewBagList();
             return View();
         }
 
@@ -72,7 +72,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateFeature(string id)
         {
-            FeatureViewBagList();
+            UpdateFeatureViewBagList();
             var values = await _featureService.GetByIdFeatureAsync(id);
             return View(values);
         }

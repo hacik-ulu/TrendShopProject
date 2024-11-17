@@ -19,7 +19,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Özel Teklifler";
             ViewBag.v3 = "Özel Teklif ve Günün İndirim Listesi";
-            ViewBag.v4 = "Kategori İşlemleri";
+            ViewBag.v4 = "Özel Teklif ve Günün İndirimleri İşlemleri";
         }
 
         void CreateSpecialOfferViewBagList()
@@ -27,7 +27,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Özel Teklifler";
             ViewBag.v3 = "Özel Teklif ve Günün İndirim Ekleme Sayfası";
-            ViewBag.v4 = "Kategori İşlemleri";
+            ViewBag.v4 = "Özel Teklif ve Günün İndirim İşlemleri";
         }
 
         void UpdateSpecialOfferViewBagList()
@@ -35,7 +35,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Özel Teklifler";
             ViewBag.v3 = "Özel Teklif ve Günün İndirim Güncelleme Sayfası";
-            ViewBag.v4 = "Kategori İşlemleri";
+            ViewBag.v4 = "Özel Teklif ve Günün İndirim İşlemleri";
         }
 
         [Route("Index")]
@@ -50,7 +50,7 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         [Route("CreateSpecialOffer")]
         public IActionResult CreateSpecialOffer()
         {
-            SpecialOfferViewBagList();
+            CreateSpecialOfferViewBagList();
             return View();
         }
 
@@ -73,10 +73,11 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateSpecialOffer(string id)
         {
-            SpecialOfferViewBagList();
+            UpdateSpecialOfferViewBagList();
             var values = await _specialOfferService.GetByIdSpecialOfferAsync(id);
             return View(values);
         }
+
         [Route("UpdateSpecialOffer/{id}")]
         [HttpPost]
         public async Task<IActionResult> UpdateSpecialOffer(UpdateSpecialOfferDto updateSpecialOfferDto)
