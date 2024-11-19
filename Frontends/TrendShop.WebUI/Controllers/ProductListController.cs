@@ -15,6 +15,9 @@ namespace TrendShop.WebUI.Controllers
 
         public IActionResult Index(string id)
         {
+            ViewBag.directory1 = "Ana Sayfa";
+            ViewBag.directory2 = "Ürünler";
+            ViewBag.directory3 = "Ürün Listesi";
             ViewBag.i = id;
             return View();
         }
