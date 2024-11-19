@@ -12,6 +12,7 @@ using TrendShop.WebUI.Services.CatalogServices.CategoryServices;
 using TrendShop.WebUI.Services.CatalogServices.FeatureServices;
 using TrendShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 using TrendShop.WebUI.Services.CatalogServices.OfferDiscountServices;
+using TrendShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using TrendShop.WebUI.Services.CatalogServices.ProductImageServices;
 using TrendShop.WebUI.Services.CatalogServices.ProductServices;
 using TrendShop.WebUI.Services.CatalogServices.SpecialOfferServices;
@@ -110,6 +111,11 @@ builder.Services.AddHttpClient<IAboutService, AboutService>(opt =>
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
