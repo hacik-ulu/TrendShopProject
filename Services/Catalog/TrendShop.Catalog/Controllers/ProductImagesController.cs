@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TrendShop.Catalog.Dtos.ProductImageDtos;
 using TrendShop.Catalog.Services.ProductImageServices;
 
-namespace MultiShop.Catalog.Controllers
+namespace TrendShop.Catalog.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
@@ -59,5 +59,3 @@ namespace MultiShop.Catalog.Controllers
         }
     }
 }
-
-// ProductDetails editing.
