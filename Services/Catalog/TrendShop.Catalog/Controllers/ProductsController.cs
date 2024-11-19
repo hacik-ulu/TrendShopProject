@@ -59,10 +59,10 @@ namespace TrendShop.Catalog.Controllers
             return Ok(values);
         }
 
-        [HttpGet("ProductListWithCategoryByCategoryId")]
-        public async Task<IActionResult> ProductListWithCategoryByCategoryId(string categoryId)
+        [HttpGet("ProductListWithCategoryByCategoryId/{id}")]
+        public async Task<IActionResult> ProductListWithCategoryByCategoryId(string id)
         {
-            var values = await _productService.GetProductsWithCategoryByCategoryIdAsync(categoryId);
+            var values = await _productService.GetProductsWithCategoryByCategoryIdAsync(id);
             return Ok(values);
         }
     }

@@ -44,15 +44,15 @@ namespace TrendShop.Catalog.Operations.ProductServices
             return _mapper.Map<GetByIdProductDto>(value);
         }
 
-        public async Task<List<ResultsProductsWithCategoryDto>> GetProductsWithCategoryAsync()
+        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync()
         {
             var products = await _productCollection.Find(x => true).ToListAsync();
-            var results = new List<ResultsProductsWithCategoryDto>();
+            var results = new List<ResultProductsWithCategoryDto>();
 
             foreach (var product in products)
             {
                 var category = await _categoryCollection.Find(c => c.CategoryID == product.CategoryID).FirstOrDefaultAsync();
-                var productWithCategory = new ResultsProductsWithCategoryDto
+                var productWithCategory = new ResultProductsWithCategoryDto
                 {
                     ProductID = product.ProductID,
                     ProductName = product.ProductName,
@@ -67,15 +67,15 @@ namespace TrendShop.Catalog.Operations.ProductServices
             return results;
         }
 
-        public async Task<List<ResultsProductsWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string categoryId)
+        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string categoryId)
         {
             var products = await _productCollection.Find(x => x.CategoryID == categoryId).ToListAsync();
-            var results = new List<ResultsProductsWithCategoryDto>();
+            var results = new List<ResultProductsWithCategoryDto>();
 
             foreach (var product in products)
             {
                 var category = await _categoryCollection.Find(c => c.CategoryID == product.CategoryID).FirstOrDefaultAsync();
-                var productWithCategory = new ResultsProductsWithCategoryDto
+                var productWithCategory = new ResultProductsWithCategoryDto
                 {
                     ProductID = product.ProductID,
                     ProductName = product.ProductName,

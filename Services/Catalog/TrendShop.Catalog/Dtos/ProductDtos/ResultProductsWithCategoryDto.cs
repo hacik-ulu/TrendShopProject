@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TrendShop.DtoLayer.CatalogDtos.ProductDtos
+﻿namespace TrendShop.Catalog.Dtos.ProductDtos
 {
-    public class ResultProductWithCategoryDto
+    public class ResultProductsWithCategoryDto
     {
         public string ProductID { get; set; }
         public string ProductName { get; set; }

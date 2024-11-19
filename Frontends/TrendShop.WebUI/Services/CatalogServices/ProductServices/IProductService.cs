@@ -9,7 +9,7 @@ namespace TrendShop.WebUI.Services.CatalogServices.ProductServices
         Task UpdateProductAsync(UpdateProductDto updateProductDto);
         Task DeleteProductAsync(string id);
         Task<UpdateProductDto> GetByIdProductAsync(string id);
-        Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryAsync();
-        Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryByCatetegoryIdAsync(string CategoryId);
+        Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync();
+        Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string CategoryId);
     }
 }

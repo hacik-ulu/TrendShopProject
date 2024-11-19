@@ -75,7 +75,7 @@ namespace TrendShop.Catalog.Mapping
             CreateMap<Contact, UpdateContactDto>().ReverseMap();
             CreateMap<Contact, GetByIdContactDto>().ReverseMap();
 
-            CreateMap<Product, ResultsProductsWithCategoryDto>().ReverseMap();
+            CreateMap<Product, ResultProductsWithCategoryDto>().ReverseMap();
 
 
         }
