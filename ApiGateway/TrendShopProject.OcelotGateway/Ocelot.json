@@ -107,7 +107,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7213
+          "Port": 7212
         }
       ],
       "UpstreamPathTemplate": "/services/comment/{everything}",

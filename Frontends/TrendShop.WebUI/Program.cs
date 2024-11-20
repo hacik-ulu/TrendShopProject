@@ -16,6 +16,7 @@ using TrendShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using TrendShop.WebUI.Services.CatalogServices.ProductImageServices;
 using TrendShop.WebUI.Services.CatalogServices.ProductServices;
 using TrendShop.WebUI.Services.CatalogServices.SpecialOfferServices;
+using TrendShop.WebUI.Services.CommentServices;
 using TrendShop.WebUI.Services.Concrete;
 using TrendShop.WebUI.Services.Interfaces;
 using TrendShop.WebUI.Settings;
@@ -120,6 +121,10 @@ builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt 
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+builder.Services.AddHttpClient<ICommentService, CommentService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 #endregion
 
 
