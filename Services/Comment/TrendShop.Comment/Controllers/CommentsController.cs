@@ -5,9 +5,9 @@ using TrendShop.Comment.Entities;
 
 namespace TrendShop.Comment.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
     public class CommentsController : ControllerBase
     {
         private readonly CommentContext _context;
