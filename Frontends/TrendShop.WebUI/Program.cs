@@ -9,6 +9,7 @@ using TrendShop.WebUI.Handlers;
 using TrendShop.WebUI.Services.CatalogServices.AboutServices;
 using TrendShop.WebUI.Services.CatalogServices.BrandServices;
 using TrendShop.WebUI.Services.CatalogServices.CategoryServices;
+using TrendShop.WebUI.Services.CatalogServices.ContactServices;
 using TrendShop.WebUI.Services.CatalogServices.FeatureServices;
 using TrendShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 using TrendShop.WebUI.Services.CatalogServices.OfferDiscountServices;
@@ -124,6 +125,11 @@ builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt 
 builder.Services.AddHttpClient<ICommentService, CommentService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 #endregion
 
