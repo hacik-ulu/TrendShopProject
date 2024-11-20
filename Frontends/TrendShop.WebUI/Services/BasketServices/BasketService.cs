@@ -16,14 +16,14 @@ namespace TrendShop.WebUI.Services.BasketServices
             var values = await GetBasket(); // sepet getirilecek.
             if (values != null) // sepetin var olduğunda dair kontrol
             {
-                // Aynı ürün
+                // Aynı ürün yoksa if çalışır
                 if (!values.BasketItems.Any(x => x.ProductID == basketItemDto.ProductID))
                 {
                     values.BasketItems.Add(basketItemDto);
                 }
-                else
+                else // aynı ürün varsa else çalışır.
                 {
-                    values = new BasketTotalDto();
+                    values = new BasketTotalDto(); // sepet sıfırlanır.
                     values.BasketItems.Add(basketItemDto);
                 }
 
