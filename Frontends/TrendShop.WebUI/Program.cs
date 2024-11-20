@@ -6,6 +6,7 @@ using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using TrendShop.WebUI.Handlers;
+using TrendShop.WebUI.Services.BasketServices;
 using TrendShop.WebUI.Services.CatalogServices.AboutServices;
 using TrendShop.WebUI.Services.CatalogServices.BrandServices;
 using TrendShop.WebUI.Services.CatalogServices.CategoryServices;
@@ -63,14 +64,18 @@ builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTo
 
 var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
+#region UI Services
 
 builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-#region UI Services
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {

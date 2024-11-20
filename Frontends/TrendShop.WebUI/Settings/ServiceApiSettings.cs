@@ -9,7 +9,7 @@
         public ServiceApi Discount { get; set; }
         public ServiceApi Order { get; set; }
         public ServiceApi Cargo { get; set; }
-        public ServiceApi Baskete { get; set; }
+        public ServiceApi Basket { get; set; }
         public ServiceApi Payment { get; set; }
         public ServiceApi Comment { get; set; }
     }
