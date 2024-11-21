@@ -1,6 +1,12 @@
-﻿ namespace TrendShop.Discount.Entities
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TrendShop.DtoLayer.DiscountDtos
 {
-    public class Coupon
+    public class GetDiscountCodeDetailByCode
     {
         public int CouponID { get; set; }
         public string Code { get; set; }
