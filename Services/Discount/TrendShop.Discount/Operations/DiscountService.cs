@@ -52,11 +52,23 @@ namespace TrendShop.Discount.Operations
         {
             string query = "SELECT * FROM Coupons WHERE CouponID = @couponId";
             var parameters = new DynamicParameters();
-            parameters.Add("couponId", id);
+            parameters.Add("@couponId", id);
 
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<GetByIdDiscountCouponDto>(query, parameters);
+                return values;
+            }
+        }
+
+        public async Task<ResultDiscountCouponDto> GetCodeDetailByCodeAsync(string code)
+        {
+            string query = "Select * From Coupons Where Code=@code";
+            var parameters = new DynamicParameters();
+            parameters.Add("@code", code);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<ResultDiscountCouponDto>(query, parameters);
                 return values;
             }
         }
