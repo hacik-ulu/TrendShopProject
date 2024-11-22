@@ -6,5 +6,6 @@ namespace TrendShop.WebUI.Services.DiscountServices
     {
         // Kupon kodu verilip İndirim kodu detaylarıyla birlikte getirilecek.
         Task<GetDiscountCodeDetailByCode> GetDiscountCode(string code);
+        Task<int> GetDiscountCouponCountRate(string code);
     }
 }

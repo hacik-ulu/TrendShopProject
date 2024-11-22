@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TrendShop.Discount.Dtos;
-using TrendShop.Discount.Operations;
+using TrendShop.Discount.Services;
 
 namespace TrendShop.Discount.Controllers
 {
@@ -58,6 +58,13 @@ namespace TrendShop.Discount.Controllers
         {
             await _discountService.UpdateDiscountCouponAsync(updateCouponDto);
             return Ok("Kupon Başarıyla Güncellendi");
+        }
+
+        [HttpGet("GetDiscountCouponCountRate")]
+        public IActionResult GetDiscountCouponCountRate(string code)
+        {
+            var values = _discountService.GetDiscountCouponRate(code);
+            return Ok(values);
         }
     }
 }

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TrendShop.Discount.Context;
-using TrendShop.Discount.Operations;
+using TrendShop.Discount.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

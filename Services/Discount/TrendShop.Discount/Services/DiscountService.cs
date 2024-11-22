@@ -2,7 +2,7 @@
 using TrendShop.Discount.Context;
 using TrendShop.Discount.Dtos;
 
-namespace TrendShop.Discount.Operations
+namespace TrendShop.Discount.Services
 {
     public class DiscountService : IDiscountService
     {
@@ -69,6 +69,18 @@ namespace TrendShop.Discount.Operations
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<ResultDiscountCouponDto>(query, parameters);
+                return values;
+            }
+        }
+
+        public int GetDiscountCouponRate(string code)
+        {
+            string query = "Select Rate From Coupons Where Code=@code";
+            var parameters = new DynamicParameters();
+            parameters.Add("@code", code);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query, parameters);
                 return values;
             }
         }
