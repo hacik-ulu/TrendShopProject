@@ -11,25 +11,29 @@ namespace TrendShop.WebUI.Services.BasketServices
         }
 
         public async Task AddBasketItem(BasketItemDto basketItemDto)
-        { //Any --> en az bir öğe içerip içermediğini kontrol eder.
-
-            var values = await GetBasket(); // sepet getirilecek.
-            if (values != null) // sepetin var olduğunda dair kontrol
+        {
+            var values = await GetBasket(); // Sepeti getir.
+            if (values != null) // Sepetin var olduğunda kontrol et.
             {
-                // Aynı ürün yoksa if çalışır
-                if (!values.BasketItems.Any(x => x.ProductID == basketItemDto.ProductID))
-                {
-                    values.BasketItems.Add(basketItemDto);
-                }
-                else // aynı ürün varsa else çalışır.
-                {
-                    values = new BasketTotalDto(); // sepet sıfırlanır.
-                    values.BasketItems.Add(basketItemDto);
-                }
+                // Aynı ürün sepette varsa
+                var existingItem = values.BasketItems.FirstOrDefault(x => x.ProductID == basketItemDto.ProductID);
 
+                if (existingItem != null)
+                {
+                    // Var olan ürünün miktarını artır
+                    existingItem.Quantity += basketItemDto.Quantity;
+                }
+                else
+                {
+                    // Aynı ürün yoksa yeni ürünü sepete ekle
+                    values.BasketItems.Add(basketItemDto);
+                }
             }
+
+            // Sepeti kaydet
             await SaveBasket(values);
         }
+
 
         public Task DeleteBasket(string userId)
         {
