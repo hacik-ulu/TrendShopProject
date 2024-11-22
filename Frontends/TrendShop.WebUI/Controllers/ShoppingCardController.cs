@@ -2,6 +2,7 @@
 using TrendShop.DtoLayer.BasketDtos;
 using TrendShop.WebUI.Services.BasketServices;
 using TrendShop.WebUI.Services.CatalogServices.ProductServices;
+using TrendShop.WebUI.Services.DiscountServices;
 
 namespace TrendShop.WebUI.Controllers
 {
@@ -16,11 +17,18 @@ namespace TrendShop.WebUI.Controllers
             _basketService = basketService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.directory1 = "Ana Sayfa";
             ViewBag.directory2 = "Ürünler";
             ViewBag.directory3 = "Sepetim";
+
+            var values = await _basketService.GetBasket();
+            ViewBag.total = values.TotalPrice;
+            var totalPriceWithTax = values.TotalPrice + values.TotalPrice / 100 * 10;
+            var tax = values.TotalPrice / 100 * 10;
+            ViewBag.TotalPriceWitTax = totalPriceWithTax;
+            ViewBag.tax = tax;
             return View();
         }
 
