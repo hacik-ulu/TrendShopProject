@@ -22,16 +22,14 @@ namespace TrendShop.WebUI.Controllers
             ViewBag.code = code;
             ViewBag.discountRate = discountRate;
             ViewBag.totalNewPriceWithDiscount = totalNewPriceWithDiscount;
-
             ViewBag.directory1 = "Ana Sayfa";
             ViewBag.directory2 = "Ürünler";
             ViewBag.directory3 = "Sepetim";
-
             var values = await _basketService.GetBasket();
             ViewBag.total = values.TotalPrice;
             var totalPriceWithTax = values.TotalPrice + values.TotalPrice / 100 * 10;
             var tax = values.TotalPrice / 100 * 10;
-            ViewBag.TotalPriceWithTax = totalPriceWithTax;
+            ViewBag.totalPriceWithTax = totalPriceWithTax;
             ViewBag.tax = tax;
             return View();
         }
