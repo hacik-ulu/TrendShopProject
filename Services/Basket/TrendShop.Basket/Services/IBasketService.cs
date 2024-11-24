@@ -7,5 +7,6 @@ namespace TrendShop.Basket.Services
         Task<BasketTotalDto> GetBasketTotal(string userId);
         Task SaveBasket(BasketTotalDto basketTotalDto);
         Task DeleteBasket(string userId);
+
     }
 }

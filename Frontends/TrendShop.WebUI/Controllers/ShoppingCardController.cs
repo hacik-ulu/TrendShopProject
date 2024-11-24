@@ -55,5 +55,19 @@ namespace TrendShop.WebUI.Controllers
             await _basketService.RemoveBasketItem(id);
             return RedirectToAction("Index");
         }
+
+        public async Task UpdateBasketItemQuantity(string productId, int quantity)
+        {
+            var basket = await _basketService.GetBasket(); // Mevcut sepeti getir
+            var itemToUpdate = basket.BasketItems.FirstOrDefault(x => x.ProductID == productId);
+
+            if (itemToUpdate != null)
+            {
+                itemToUpdate.Quantity = quantity; // Miktarı güncelle
+                await _basketService.SaveBasket(basket); // Sepeti kaydet
+            }
+        }
+
+
     }
 }

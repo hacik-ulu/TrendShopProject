@@ -43,10 +43,11 @@ namespace TrendShop.Basket.Services
             }
         }
 
-
         public async Task SaveBasket(BasketTotalDto basketTotalDto)
         {
             await _redisService.GetDb().StringSetAsync(basketTotalDto.UserID, JsonSerializer.Serialize(basketTotalDto));
         }
+
+        
     }
 }

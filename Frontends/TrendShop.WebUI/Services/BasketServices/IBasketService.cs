@@ -9,5 +9,6 @@ namespace TrendShop.WebUI.Services.BasketServices
         Task DeleteBasket(string userId); // Komple sepetin tamamı silinecek.
         Task AddBasketItem(BasketItemDto basketItemDto); // Sepet içerisine öğe eklenecek.
         Task<bool> RemoveBasketItem(string productId); // Sepetteki öğelerin remove/silme işlemi için kullanılacak.
+
     }
 }

@@ -61,5 +61,7 @@ namespace TrendShop.WebUI.Services.BasketServices
         {
             await _httpClient.PostAsJsonAsync<BasketTotalDto>("baskets", basketTotalDto);
         }
+
+
     }
 }
