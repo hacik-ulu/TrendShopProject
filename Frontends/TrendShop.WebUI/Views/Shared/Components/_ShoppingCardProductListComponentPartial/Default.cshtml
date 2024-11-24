@@ -12,30 +12,74 @@
         <tbody class="align-middle">
             @foreach (var item in Model)
             {
-                <tr data-id="@item.ProductID" data-price="@item.Price">
-                    <td class="align-middle"><img src="@item.ProductImageUrl" alt="" style="width: 50px; height:60px;"> @item.ProductName</td>
-                    <td class="align-middle">@item.Price ₺</td>
+                <tr data-id="@item.ProductID" data-price="@item.Price" data-name="@item.ProductName">
+                    <td class="align-middle">
+                        <img src="@item.ProductImageUrl" alt="" style="width: 50px; height:60px;"> @item.ProductName
+                    </td>
+                    <td class="align-middle product-price">@item.Price ₺</td>
                     <td class="align-middle">
                         <div class="input-group quantity mx-auto" style="width: 100px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-primary btn-minus" data-action="decrement">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                            <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center quantity-input" value="@item.Quantity" readonly>
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-primary btn-plus" data-action="increment">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
+                            <input type="number" class="form-control form-control-sm bg-secondary border-0 text-center quantity-input" value="1" min="1" max="10">
                         </div>
                     </td>
                     <td class="align-middle total-price">@item.Price ₺</td>
-                    <td class="align-middle"><a href="/ShoppingCard/RemoveBasketItem/@item.ProductID" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a></td>
+                    <td class="align-middle">
+                        <a href="/ShoppingCard/RemoveBasketItem/@item.ProductID" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Kullanıcının manuel girdiği değeri dinle
+        document.querySelectorAll('.quantity-input').forEach(function(input) {
+            input.addEventListener('change', function () {
+                let value = parseInt(this.value);
+                let row = this.closest('tr'); // Satırdaki ürün bilgilerini bul
+                let priceElement = row.querySelector('.product-price'); // Ürün fiyatını bul
+                let totalPriceElement = row.querySelector('.total-price'); // Toplam fiyatı göstereceğimiz eleman
 
+                // Eğer değer 1'den küçükse, 1'e sabitle
+                if (value < 1) {
+                    this.value = 1;
+                    value = 1;
+                }
+                // Eğer değer 10'dan büyükse, 10'a sabitle
+                if (value > 10) {
+                    this.value = 10;
+                    value = 10;
+                }
+
+                // Ürün fiyatını al
+                let price = parseFloat(row.dataset.price);
+
+                // Yeni toplam fiyatı hesapla ve göster
+                totalPriceElement.textContent = (price * value).toFixed(2) + ' ₺';
+
+                // Toplam fiyatları güncelle
+                updateTotalPrice();
+            });
+        });
+    });
+
+    function updateTotalPrice() {
+        let totalPrice = 0;
+
+        // Sepetteki her ürünün toplam fiyatını topla
+        document.querySelectorAll('.total-price').forEach(function (totalElement) {
+            totalPrice += parseFloat(totalElement.textContent.replace(' ₺', ''));
+        });
+
+        // Vergi ve toplam fiyatı hesapla
+        var tax = totalPrice / 100 * 10;
+        var totalPriceWithTax = totalPrice + tax;
+
+        // Güncellenmiş toplam fiyatları ekrana yaz
+        document.querySelector('#total').textContent = totalPrice.toFixed(2) + ' ₺';
+        document.querySelector('#totalPriceWithTax').textContent = totalPriceWithTax.toFixed(2) + ' ₺';
+        document.querySelector('#tax').textContent = tax.toFixed(2) + ' ₺';
+    }
+</script>
