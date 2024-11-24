@@ -32,6 +32,7 @@ namespace TrendShop.WebUI.Controllers
             ViewBag.totalPriceWithTax = totalPriceWithTax;
             ViewBag.tax = tax;
             return View();
+
         }
 
         public async Task<IActionResult> AddBasketItem(string id)
