@@ -1,14 +1,9 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TrendShop.Order.Application.Features.Mediator.Commands.OrderingCommands;
 using TrendShop.Order.Application.Interfaces;
 using TrendShop.Order.Domain.Entities;
 
-namespace TrendShop.Order.Application.Features.Mediator.Handlers.OrderingHandlers
+namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandlers
 {
     public class CreateOrderingCommandHandler : IRequestHandler<CreateOrderingCommand>
     {

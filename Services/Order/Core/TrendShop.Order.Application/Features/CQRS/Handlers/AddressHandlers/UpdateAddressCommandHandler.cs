@@ -21,7 +21,7 @@ namespace TrendShop.Order.Application.Features.CQRS.Handlers.AddressHandlers
         public async Task Handle(UpdateAddressCommand updateAddressCommand)
         {
             var values = await _repository.GetByIdAsync(updateAddressCommand.AddressID);
-            values.Detail = updateAddressCommand.Detail;
+            values.Detail1 = updateAddressCommand.Detail;
             values.District = updateAddressCommand.District;
             values.City = updateAddressCommand.City;
             values.UserID = updateAddressCommand.UserID;
