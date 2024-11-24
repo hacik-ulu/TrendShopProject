@@ -30,6 +30,7 @@ namespace TrendShop.WebUI.Controllers
             var values = await _userService.GetUserInfo();
             createOrderAddressDto.UserID = values.Id;
             await _orderAddressService.CreateOrderAddressAsync(createOrderAddressDto);
+            createOrderAddressDto.Description = "aa";
             return RedirectToAction("Index", "Payment");
         }
     }

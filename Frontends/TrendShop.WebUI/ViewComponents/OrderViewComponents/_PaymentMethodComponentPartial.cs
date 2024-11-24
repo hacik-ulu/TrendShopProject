@@ -2,7 +2,7 @@
 
 namespace TrendShop.WebUI.ViewComponents.OrderViewComponents
 {
-    public class _OrderPaymentMethodComponentPartial : ViewComponent
+    public class _PaymentMethodComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
