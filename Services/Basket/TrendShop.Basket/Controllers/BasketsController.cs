@@ -41,5 +41,6 @@ namespace TrendShop.Basket.Controllers
             await _basketService.DeleteBasket(_loginService.GetUserId);
             return Ok("Sepet Başarıyla Silindi");
         }
+
     }
 }

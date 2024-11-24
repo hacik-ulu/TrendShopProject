@@ -21,6 +21,7 @@ namespace TrendShop.WebUI.Controllers
             ViewBag.directory1 = "TrendShop";
             ViewBag.directory2 = "İletişim";
             ViewBag.directory3 = "Sipariş İşlemleri";
+
             return View();
         }
 

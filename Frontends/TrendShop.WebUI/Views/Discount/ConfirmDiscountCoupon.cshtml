@@ -44,21 +44,15 @@
                 <h5>
                     @if (ViewBag.totalNewPriceWithDiscount != null && ViewBag.totalNewPriceWithDiscount != 0)
                     {
-                        @ViewBag.totalNewPriceWithDiscount
-
- 
-                            }
+                        @ViewBag.totalNewPriceWithDiscount 
+                    }
                     else
                     {
                         @ViewBag.totalPriceWithTax
- 
-                            }
+                    }
                 </h5>
             </div>
-            <form action="@Url.Action("Index", "Order")" method="get">
-                <button type="submit" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Sipariş Sayfasına İlerleyin</button>
-            </form>
+            <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Ödeme Adımına Geç</button>
         </div>
     </div>
 </div>
-
