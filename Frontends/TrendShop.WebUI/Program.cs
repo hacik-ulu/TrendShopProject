@@ -22,6 +22,7 @@ using TrendShop.WebUI.Services.CommentServices;
 using TrendShop.WebUI.Services.Concrete;
 using TrendShop.WebUI.Services.DiscountServices;
 using TrendShop.WebUI.Services.Interfaces;
+using TrendShop.WebUI.Services.OrderServices.OrderAddressServices;
 using TrendShop.WebUI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -76,6 +77,13 @@ builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+builder.Services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
 
 builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
 {
