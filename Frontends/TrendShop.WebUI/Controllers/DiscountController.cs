@@ -30,6 +30,8 @@ namespace TrendShop.WebUI.Controllers
 
             var totalNewPriceWithDiscount = totalPriceWithTax - (totalPriceWithTax / 100 * values);
 
+            HttpContext.Session.SetString("DiscountedTotal", totalNewPriceWithDiscount.ToString("F2"));
+
             return RedirectToAction("Index", "ShoppingCard", new { code = code, discountRate = values, totalNewPriceWithDiscount = totalNewPriceWithDiscount });
         }
     }

@@ -1,49 +1,90 @@
-﻿@model List<BasketItemDto>
+﻿@{
+    // ViewBag'den gelen veriler
+    var discountedTotal = ViewBag.DiscountedTotal; // İndirimli toplam
+    var totalPrice = ViewBag.total; // Normal toplam
+    var tax = ViewBag.tax; // Normal KDV
+    var shippingFee = 30m; // Kargo ücreti sabit olarak 30 TL ve decimal türünde
+    var totalPriceWithTax = ViewBag.totalPriceWithTax; // Normal toplam fiyat (KDV dahil)
+    var totalPriceWithTaxAndShipping = ViewBag.totalPriceWithTaxAndShipping; // KDV ve Kargo dahil toplam fiyat
 
-@{
-    decimal shippingFee = 30.00m;
-    decimal totalProductPrice = Model.Sum(item => item.Price * item.Quantity);
-    decimal totalTax = totalProductPrice * 0.10m;
-    decimal grandTotal = totalProductPrice + totalTax + shippingFee;
+    var totalPriceFormatted = totalPrice.ToString("F2");
+    var taxFormatted = tax.ToString("F2");
+    var shippingFeeFormatted = shippingFee.ToString("F2");
+    var totalPriceWithTaxFormatted = totalPriceWithTax.ToString("F2");
+    var totalPriceWithTaxAndShippingFormatted = totalPriceWithTaxAndShipping.ToString("F2");
+
+    // Kupon uygulanmış mı?
+    bool isCouponApplied = discountedTotal < totalPrice;
 }
 
+<!-- Sipariş Özeti Başlığı -->
 <h5 class="section-title position-relative text-uppercase mb-3">
     <span class="bg-secondary pr-3">Sipariş Özeti</span>
 </h5>
 
-
-
 <div class="bg-light p-30 mb-5">
     <div class="border-bottom">
         <h6 class="mb-3">Sipariş Ürün Listesi</h6>
-        @foreach (var item in Model)
+        @foreach (var item in (List<BasketItemDto>)ViewBag.BasketItems)
         {
-            <div class="d-flex justify-content-between">
-                <p>@item.ProductName (@item.Quantity * @item.Price ₺)</p>
-                <h6>@(item.Price * item.Quantity) ₺</h6>
+            <div class="d-flex justify-content-between mb-2">
+                <p>
+                    @item.ProductName - (Miktar: @item.Quantity x @(isCouponApplied ? discountedTotal : item.Price) ₺)
+                    @if (isCouponApplied)
+                    {
+                        <span>İndirimli Fiyat: @(item.Quantity * discountedTotal) ₺</span>
+                    }
+                    else
+                    {
+                        <span>Toplam: @(item.Quantity * item.Price) ₺</span>
+                    }
+                </p>
             </div>
         }
     </div>
 
+    <!-- Tutarlar ve KDV -->
     <div class="border-bottom pt-3 pb-2">
+        <!-- Alışveriş Tutarı (KDV Dahil) -->
+        <!-- Alışveriş Tutarı (KDV Dahil) -->
+        <!-- Alışveriş Tutarı (KDV Dahil) -->
         <div class="d-flex justify-content-between mb-3">
-            <h6>Alışveriş Tutarı (KDV hariç)</h6>
-            <h6>@totalProductPrice.ToString("F2") ₺</h6>
+            <h6>Alışveriş Tutarı (KDV Dahil)</h6>
+            <h6>
+                @(
+                    isCouponApplied
+                    ? discountedTotal.ToString("F2")
+                    : totalPriceWithTax.ToString("F2")
+                    ) ₺
+            </h6>
         </div>
+
+        <!-- KDV (İndirimli Fiyat üzerinden) -->
         <div class="d-flex justify-content-between">
             <h6>KDV (10%)</h6>
-            <h6>@totalTax.ToString("F2") ₺</h6>
-        </div>
-        <div class="d-flex justify-content-between">
-            <h6 class="font-weight-medium">Kargo Ücreti</h6>
-            <h6 class="font-weight-medium">@shippingFee.ToString("F2") ₺</h6>
+            <h6>@taxFormatted ₺</h6>
         </div>
     </div>
 
+    <!-- Kargo Ücreti -->
+    <div class="border-bottom pt-3 pb-2">
+        <div class="d-flex justify-content-between">
+            <h6>Kargo Ücreti</h6>
+            <h6>@shippingFeeFormatted ₺</h6>
+        </div>
+    </div>
+
+    <!-- Genel Toplam -->
     <div class="pt-2">
         <div class="d-flex justify-content-between mt-2">
             <h5>Genel Toplam</h5>
-            <h5>@grandTotal.ToString("F2") ₺</h5>
+            <h5>
+                @(
+                    isCouponApplied
+                    ? (discountedTotal + shippingFee).ToString("F2")
+                    : (totalPriceWithTax + shippingFee).ToString("F2")
+                    ) ₺
+            </h5>
         </div>
     </div>
 </div>

@@ -17,22 +17,79 @@ namespace TrendShop.WebUI.Controllers
             _basketService = basketService;
         }
 
+        //public async Task<IActionResult> Index(string code, int discountRate, decimal totalNewPriceWithDiscount)
+        //{
+        //    ViewBag.code = code;
+        //    ViewBag.discountRate = discountRate;
+        //    ViewBag.totalNewPriceWithDiscount = totalNewPriceWithDiscount;
+        //    ViewBag.directory1 = "Ana Sayfa";
+        //    ViewBag.directory2 = "Ürünler";
+        //    ViewBag.directory3 = "Sepetim";
+        //    var values = await _basketService.GetBasket();
+        //    ViewBag.total = values.TotalPrice;
+        //    var totalPriceWithTax = values.TotalPrice + values.TotalPrice / 100 * 10;
+        //    var tax = values.TotalPrice / 100 * 10;
+        //    ViewBag.totalPriceWithTax = totalPriceWithTax;
+        //    ViewBag.tax = tax;
+        //    return View();
+
+        //}
+
         public async Task<IActionResult> Index(string code, int discountRate, decimal totalNewPriceWithDiscount)
         {
+            // ViewBag ile gelen veriler
             ViewBag.code = code;
             ViewBag.discountRate = discountRate;
             ViewBag.totalNewPriceWithDiscount = totalNewPriceWithDiscount;
             ViewBag.directory1 = "Ana Sayfa";
             ViewBag.directory2 = "Ürünler";
             ViewBag.directory3 = "Sepetim";
+
+            // Sepet verilerini al
             var values = await _basketService.GetBasket();
-            ViewBag.total = values.TotalPrice;
-            var totalPriceWithTax = values.TotalPrice + values.TotalPrice / 100 * 10;
-            var tax = values.TotalPrice / 100 * 10;
+
+            // Sepet toplam fiyatı
+            decimal totalPrice = values.TotalPrice;
+            ViewBag.total = totalPrice;
+
+            // KDV hesapla (%10)
+            decimal tax = totalPrice / 100 * 10;
+            decimal totalPriceWithTax = totalPrice + tax;
+
+            // KDV ve toplam fiyatı ViewBag'e ekle
             ViewBag.totalPriceWithTax = totalPriceWithTax;
             ViewBag.tax = tax;
-            return View();
 
+            // Session'dan indirimli tutarı al
+            var discountedTotal = HttpContext.Session.GetString("DiscountedTotal");
+
+            // Eğer session'da indirimli fiyat varsa, bunu kullan
+            if (!string.IsNullOrEmpty(discountedTotal))
+            {
+                // Kupon kodu uygulandı, indirimli fiyatı kullan
+                ViewBag.DiscountedTotal = decimal.Parse(discountedTotal);
+            }
+            else
+            {
+                // Kupon kodu uygulanmadıysa, normal fiyatı kullan
+                ViewBag.DiscountedTotal = totalPriceWithTax;
+            }
+
+            // Eğer kupon kodu varsa ve geçerliyse indirim uygula
+            if (!string.IsNullOrEmpty(code) && discountRate > 0)
+            {
+                // Kupon kodunun geçerli olduğunu varsayalım
+                decimal discountedPrice = totalPrice - (totalPrice * discountRate / 100);
+                decimal discountedPriceWithTax = discountedPrice + (discountedPrice / 100 * 10); // KDV ekle
+
+                // İndirimli tutarı session'a kaydet
+                HttpContext.Session.SetString("DiscountedTotal", discountedPriceWithTax.ToString());
+
+                // ViewBag ile indirimli fiyatı gönder
+                ViewBag.DiscountedTotal = discountedPriceWithTax;
+            }
+
+            return View();
         }
 
         public async Task<IActionResult> AddBasketItem(string id)

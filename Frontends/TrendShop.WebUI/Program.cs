@@ -27,6 +27,16 @@ using TrendShop.WebUI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Session Configuration
+builder.Services.AddDistributedMemoryCache(); // Session'lar için bellek tabanlý cache
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Session süre sýnýrýný belirleyebilirsiniz
+    options.Cookie.HttpOnly = true; // Güvenlik için HttpOnly yapabilirsiniz
+    options.Cookie.IsEssential = true; // Uygulamanýzýn çalýþmasý için gerekli olduðunu belirtiyoruz
+});
+
+
 // Jwt and Cookie Configuration
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
 {
@@ -167,6 +177,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 app.UseAuthentication();
