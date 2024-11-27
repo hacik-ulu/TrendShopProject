@@ -5,31 +5,132 @@
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
     <meta charset="utf-8">
-    <title>TrendShop Kayıt Paneli</title>
-    <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/css/opensans-font.css">
-    <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/fonts/line-awesome/css/line-awesome.min.css">
+    <title>TrendShop Kayıt Paneli</title>
+    <link rel="stylesheet" href="~/colorlib-regform-30/css/opensans-font.css">
+    <link rel="stylesheet" href="~/colorlib-regform-30/fonts/line-awesome/css/line-awesome.min.css">
     <link rel="stylesheet" href="~/colorlib-regform-30/css/style.css" />
     <style>
-        .password-warning {
-            display: none;
-            color: red; 
-            margin-top: 1px; 
-            font-size: 12px; 
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
         }
 
-
-        input[type="password"]:focus + .password-warning {
-            display: block;
+        .form-v4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0 20px;
         }
+
+        .form-v4-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .form-left {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .form-left h2 {
+                font-size: 28px;
+                color: #2c3e50;
+                margin-bottom: 10px;
+            }
+
+            .form-left p {
+                font-size: 14px;
+                color: #7f8c8d;
+                line-height: 1.5;
+            }
+
+        .form-left-last a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #3498db;
+            transition: color 0.3s;
+        }
+
+            .form-left-last a:hover {
+                color: #1abc9c;
+            }
+
+        .form-detail {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-row label {
+                font-size: 14px;
+                color: #7f8c8d;
+                margin-bottom: 5px;
+            }
+
+            .form-row input {
+                padding: 10px;
+                font-size: 14px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                width: 100%;
+            }
+
+                .form-row input:focus {
+                    outline: none;
+                    border-color: #3498db;
+                }
+
+        .form-row-1 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row-last {
+            text-align: center;
+        }
+
+            .form-row-last button {
+                padding: 10px 20px;
+                background-color: #3498db;
+                color: #fff;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 100%;
+                transition: background-color 0.3s;
+            }
+
+                .form-row-last button:hover {
+                    background-color: #2980b9;
+                }
     </style>
 </head>
-<body class="form-v4">
-    <div class="page-content">
+<body>
+
+    <div class="form-v4">
         <div class="form-v4-content">
             <div class="form-left">
                 <h2>TrendShop E-Ticaret</h2>
@@ -50,32 +151,32 @@
                         <label for="last_name">Soyadınız</label>
                         <input type="text" asp-for="Surname" id="last_name" class="input-text">
                     </div>
-                </div>
+                </div><br />
                 <div class="form-row">
                     <label for="your_email">Email Adresi</label>
                     <input type="text" asp-for="Email" id="your_email" class="input-text" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
-                </div>
+                </div><br />
                 <div class="form-row">
                     <label for="your_username">Kullanıcı Adınız</label>
                     <input type="text" asp-for="Username" id="your_username" class="input-text" required>
-                </div>
+                </div><br />
                 <div class="form-group">
-                    <div class="form-row form-row-1 ">
+                    <div class="form-row form-row-1">
                         <label for="password">Şifre</label>
                         <input type="password" asp-for="Password" id="password" class="input-text" required>
-                        <div class="password-warning">Şifreniz büyük, küçük harf ve özel karakter içermelidir.</div>
                     </div>
                     <div class="form-row form-row-1">
                         <label for="comfirm-password">Şifre Tekrar</label>
                         <input type="password" asp-for="ConfirmPassword" id="comfirm_password" class="input-text" required>
                     </div>
                 </div>
-
+                <br /><br />
                 <div class="form-row-last">
-                    <button class="register" style="height:35px">Kayıt Ol</button>
+                    <button class="register" type="submit">Kayıt Ol</button>
                 </div>
             </form>
         </div>
     </div>
+
 </body>
 </html>

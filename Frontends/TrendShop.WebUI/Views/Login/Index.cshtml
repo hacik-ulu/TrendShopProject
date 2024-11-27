@@ -4,19 +4,150 @@
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
     <meta charset="utf-8">
-    <title>TrendShop Login Sayfası</title>
-    <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!-- Font-->
+    <title>TrendShop Login Sayfası</title>
     <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/css/opensans-font.css">
     <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/fonts/line-awesome/css/line-awesome.min.css">
-    <!-- Jquery -->
-    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
-    <!-- Main Style Css -->
     <link rel="stylesheet" href="~/colorlib-regform-30/css/style.css" />
+    <style>
+        /* Genel form stili */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-v4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .form-v4-content {
+            background: #ffffff;
+            padding: 5%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .form-left {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+            .form-left h2 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .form-left p {
+                font-size: 14px;
+                margin-bottom: 15px;
+                color: #555;
+            }
+
+        .account {
+            color: #3498db;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: 1px solid #3498db;
+        }
+
+            .account:hover {
+                background-color: #3498db;
+                color: #fff;
+            }
+
+        .form-detail {
+            margin-top: 30px;
+        }
+
+            .form-detail h2 {
+                text-align: center;
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+            .form-row label {
+                font-size: 14px;
+                color: #555;
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .form-row input {
+                width: 100%;
+                padding: 12px;
+                font-size: 14px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background-color: #f9f9f9;
+            }
+
+                .form-row input:focus {
+                    border-color: #3498db;
+                    outline: none;
+                    background-color: #fff;
+                }
+
+        .form-row-last {
+            text-align: center;
+        }
+
+        .register {
+            background-color: #3498db;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+            .register:hover {
+                background-color: #2980b9;
+            }
+
+        /* Responsive tasarım için esnek stiller */
+        .form-v4-content {
+            padding: 8%;
+        }
+
+        .form-detail h2 {
+            font-size: 20px;
+        }
+
+        .form-row input {
+            padding: 10px;
+        }
+
+        /* Button'ın genişliğini küçük ekranlarda daha rahat hale getirmek için */
+        .register {
+            width: 100%;
+        }
+
+        /* Genişlik sınırlaması ve daha iyi görsel uyum için */
+        .form-v4 {
+            padding: 0 5%;
+        }
+    </style>
 </head>
 <body class="form-v4">
     <div class="page-content">
@@ -26,7 +157,7 @@
                 <p class="text-1">TrendShop projemiz üzerinden e-ticaret işlemlerini gerçekleştirebilmek, indirimli ürünler ve fırsatlardan haberdar olmak adına hemen oturum açma işlemini gerçekleştirin.</p>
                 <p class="text-2">Alışverişinizi gerçekleştirebilmek, sepetinize ürün eklemek ve ürün listesini görebilmek için oturum açmanız gerekmektedir. Bir hesabınız yoksa aşağıda kayıt olabilirsiniz.</p>
                 <div class="form-left-last">
-                    <a href="/Register/Index/" style="height:35px" class="account">Kayıt Ol</a>
+                    <a href="/Register/Index/" class="account">Kayıt Ol</a>
                 </div>
             </div>
             <form class="form-detail" method="post">
@@ -39,15 +170,11 @@
                     <label for="your_password">Şifreniz</label>
                     <input type="password" id="your_password" asp-for="Password" class="input-text" required>
                 </div>
-
                 <div class="form-row-last">
-                    <button class="register" style="height:35px">Giriş Yap</button>
+                    <button class="register">Giriş Yap</button>
                 </div>
             </form>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 </body>
 </html>
