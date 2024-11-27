@@ -23,6 +23,8 @@ using TrendShop.WebUI.Services.Concrete;
 using TrendShop.WebUI.Services.DiscountServices;
 using TrendShop.WebUI.Services.Interfaces;
 using TrendShop.WebUI.Services.OrderServices.OrderAddressServices;
+using TrendShop.WebUI.Services.OrderServices.OrderOderingServices;
+using TrendShop.WebUI.Services.OrderServices.OrderOrderingServices;
 using TrendShop.WebUI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -99,6 +101,12 @@ builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IOrderOderingService, OrderOderingService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {

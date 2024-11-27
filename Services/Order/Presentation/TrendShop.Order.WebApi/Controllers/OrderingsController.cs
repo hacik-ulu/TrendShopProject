@@ -13,7 +13,6 @@ namespace TrendShop.Order.WebApi.Controllers
     public class OrderingsController : ControllerBase
     {
         private readonly IMediator _mediator;
-
         public OrderingsController(IMediator mediator)
         {
             _mediator = mediator;
@@ -53,5 +52,13 @@ namespace TrendShop.Order.WebApi.Controllers
             await _mediator.Send(new RemoveOrderingCommand(id));
             return Ok("Sipariş başarıyla silindi");
         }
+
+        [HttpGet("GetOrderingByUserId/{id}")]
+        public async Task<IActionResult> GetOrderingByUserId(string id)
+        {
+            var values = await _mediator.Send(new GetOrderingByUserIdQuery(id));
+            return Ok(values);
+        }
+
     }
 }
