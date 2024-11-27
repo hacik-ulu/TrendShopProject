@@ -37,7 +37,6 @@ namespace TrendShop.WebUI.Controllers
 
         public async Task<IActionResult> Index(string code, int discountRate, decimal totalNewPriceWithDiscount)
         {
-            // ViewBag ile gelen veriler
             ViewBag.code = code;
             ViewBag.discountRate = discountRate;
             ViewBag.totalNewPriceWithDiscount = totalNewPriceWithDiscount;
@@ -45,47 +44,35 @@ namespace TrendShop.WebUI.Controllers
             ViewBag.directory2 = "Ürünler";
             ViewBag.directory3 = "Sepetim";
 
-            // Sepet verilerini al
             var values = await _basketService.GetBasket();
 
-            // Sepet toplam fiyatı
             decimal totalPrice = values.TotalPrice;
             ViewBag.total = totalPrice;
 
-            // KDV hesapla (%10)
             decimal tax = totalPrice / 100 * 10;
             decimal totalPriceWithTax = totalPrice + tax;
 
-            // KDV ve toplam fiyatı ViewBag'e ekle
             ViewBag.totalPriceWithTax = totalPriceWithTax;
             ViewBag.tax = tax;
 
-            // Session'dan indirimli tutarı al
             var discountedTotal = HttpContext.Session.GetString("DiscountedTotal");
 
-            // Eğer session'da indirimli fiyat varsa, bunu kullan
             if (!string.IsNullOrEmpty(discountedTotal))
             {
-                // Kupon kodu uygulandı, indirimli fiyatı kullan
                 ViewBag.DiscountedTotal = decimal.Parse(discountedTotal);
             }
             else
             {
-                // Kupon kodu uygulanmadıysa, normal fiyatı kullan
                 ViewBag.DiscountedTotal = totalPriceWithTax;
             }
 
-            // Eğer kupon kodu varsa ve geçerliyse indirim uygula
             if (!string.IsNullOrEmpty(code) && discountRate > 0)
             {
-                // Kupon kodunun geçerli olduğunu varsayalım
                 decimal discountedPrice = totalPrice - (totalPrice * discountRate / 100);
                 decimal discountedPriceWithTax = discountedPrice + (discountedPrice / 100 * 10); // KDV ekle
 
-                // İndirimli tutarı session'a kaydet
                 HttpContext.Session.SetString("DiscountedTotal", discountedPriceWithTax.ToString());
 
-                // ViewBag ile indirimli fiyatı gönder
                 ViewBag.DiscountedTotal = discountedPriceWithTax;
             }
 

@@ -10,9 +10,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/style.css">
+    <style>
+        /* Başarı Mesajı Stilleri */
+        #success-message {
+            display: none;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+        }
+
+            #success-message.active {
+                display: block;
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+
+            /* Yeşil Tik Stili */
+            #success-message .checkmark {
+                display: inline-block;
+                margin-bottom: 10px;
+            }
+
+                #success-message .checkmark svg {
+                    width: 50px;
+                    height: 50px;
+                    fill: white;
+                }
+    </style>
 </head>
 <body>
     <div class="container">
+        <div id="success-message">
+            <div class="checkmark">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path d="M26 0C11.6 0 0 11.6 0 26s11.6 26 26 26 26-11.6 26-26S40.4 0 26 0zm0 50C12.7 50 2 39.3 2 26S12.7 2 26 2s24 10.7 24 24-10.7 24-24 24z" /><path d="M22.8 37.6l-9.8-9.8c-.6-.6-.6-1.5 0-2.1.6-.6 1.5-.6 2.1 0l8.2 8.2L37 14.4c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1L23.9 37.6c-.3.3-.6.4-1 .4s-.7-.1-1-.4z" /></svg>
+            </div>
+            <p>Ödeme Başarılı!</p>
+        </div>
+
         <div class="card-container">
             <div class="front">
                 <div class="image">
@@ -46,7 +91,7 @@
 
         </div>
 
-        <form action="">
+        <form id="payment-form">
             <div class="inputBox">
                 <span>Kart Numarası</span>
                 <input type="text" maxlength="16" class="card-number-input">
@@ -98,38 +143,47 @@
             <input type="submit" value="Ödemeyi Tamamla" class="submit-btn">
         </form>
     </div>
+
     <script>
+            document.querySelector('.card-number-input').oninput = () => {
+        document.querySelector('.card-number-box').innerText = document.querySelector('.card-number-input').value;
+            }
 
-        document.querySelector('.card-number-input').oninput = () => {
-            document.querySelector('.card-number-box').innerText = document.querySelector('.card-number-input').value;
-        }
+            document.querySelector('.card-holder-input').oninput = () => {
+        document.querySelector('.card-holder-name').innerText = document.querySelector('.card-holder-input').value;
+            }
 
-        document.querySelector('.card-holder-input').oninput = () => {
-            document.querySelector('.card-holder-name').innerText = document.querySelector('.card-holder-input').value;
-        }
+            document.querySelector('.month-input').oninput = () => {
+        document.querySelector('.exp-month').innerText = document.querySelector('.month-input').value;
+            }
 
-        document.querySelector('.month-input').oninput = () => {
-            document.querySelector('.exp-month').innerText = document.querySelector('.month-input').value;
-        }
+            document.querySelector('.year-input').oninput = () => {
+        document.querySelector('.exp-year').innerText = document.querySelector('.year-input').value;
+            }
 
-        document.querySelector('.year-input').oninput = () => {
-            document.querySelector('.exp-year').innerText = document.querySelector('.year-input').value;
-        }
+            document.querySelector('.cvv-input').onmouseenter = () => {
+        document.querySelector('.front').style.transform = 'perspective(1000px) rotateY(-180deg)';
+        document.querySelector('.back').style.transform = 'perspective(1000px) rotateY(0deg)';
+            }
 
-        document.querySelector('.cvv-input').onmouseenter = () => {
-            document.querySelector('.front').style.transform = 'perspective(1000px) rotateY(-180deg)';
-            document.querySelector('.back').style.transform = 'perspective(1000px) rotateY(0deg)';
-        }
+            document.querySelector('.cvv-input').onmouseleave = () => {
+        document.querySelector('.front').style.transform = 'perspective(1000px) rotateY(0deg)';
+        document.querySelector('.back').style.transform = 'perspective(1000px) rotateY(180deg)';
+            }
 
-        document.querySelector('.cvv-input').onmouseleave = () => {
-            document.querySelector('.front').style.transform = 'perspective(1000px) rotateY(0deg)';
-            document.querySelector('.back').style.transform = 'perspective(1000px) rotateY(180deg)';
-        }
+            document.querySelector('.cvv-input').oninput = () => {
+        document.querySelector('.cvv-box').innerText = document.querySelector('.cvv-input').value;
+            }
 
-        document.querySelector('.cvv-input').oninput = () => {
-            document.querySelector('.cvv-box').innerText = document.querySelector('.cvv-input').value;
-        }
-
+            document.querySelector('#payment-form').onsubmit = (event) => {
+            event.preventDefault();
+                const successMessage = document.querySelector('#success-message');
+                successMessage.classList.add('active');
+                setTimeout(() => {
+                    successMessage.classList.remove('active');
+                    window.location.href = '/Default/Index';
+                }, 3000);
+            }
     </script>
 </body>
 </html>

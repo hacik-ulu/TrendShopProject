@@ -89,15 +89,8 @@ namespace TrendShop.WebUI.Controllers
 
             var totalPriceWithTaxAndShipping = totalPriceWithTax + shippingFee;
             ViewBag.totalPriceWithTaxAndShipping = totalPriceWithTaxAndShipping;
-
-
-
             return View();
         }
-
-
-
-
 
 
 
