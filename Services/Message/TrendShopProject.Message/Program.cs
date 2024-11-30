@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using TrendShopProject.Message.DAL.Context;
+using TrendShopProject.Message.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,8 @@ builder.Services.AddDbContext<MessageContext>(opt =>
     opt.UseNpgsql(connectionString);
 });
 
+builder.Services.AddScoped<IUserMessageService, UserMessageService>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
 builder.Services.AddControllers();

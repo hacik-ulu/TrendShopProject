@@ -89,7 +89,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShopProject.Images", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Message", "Message", "{3B47736F-03FE-4CF2-92F7-E1A8582BBE1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShopProject.Message", "Services\Message\TrendShopProject.Message\TrendShopProject.Message.csproj", "{301DC9F2-1EC1-46D6-A00B-D41D49559AEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShopProject.Message", "Services\Message\TrendShopProject.Message\TrendShopProject.Message.csproj", "{301DC9F2-1EC1-46D6-A00B-D41D49559AEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
