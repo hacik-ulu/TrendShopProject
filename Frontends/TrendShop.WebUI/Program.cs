@@ -22,6 +22,7 @@ using TrendShop.WebUI.Services.CommentServices;
 using TrendShop.WebUI.Services.Concrete;
 using TrendShop.WebUI.Services.DiscountServices;
 using TrendShop.WebUI.Services.Interfaces;
+using TrendShop.WebUI.Services.MessageServices;
 using TrendShop.WebUI.Services.OrderServices.OrderAddressServices;
 using TrendShop.WebUI.Services.OrderServices.OrderOderingServices;
 using TrendShop.WebUI.Services.OrderServices.OrderOrderingServices;
@@ -29,22 +30,20 @@ using TrendShop.WebUI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Session Configuration
-builder.Services.AddDistributedMemoryCache(); // Session'lar için bellek tabanlý cache
+builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(30); // Session süre sýnýrýný belirleyebilirsiniz
-    options.Cookie.HttpOnly = true; // Güvenlik için HttpOnly yapabilirsiniz
-    options.Cookie.IsEssential = true; // Uygulamanýzýn çalýþmasý için gerekli olduðunu belirtiyoruz
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Session süresi
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true; // GDPR uyumu için gerekli
 });
 
 
-// Jwt and Cookie Configuration
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
 {
-    // Sisteme giriþ yapmadan gelen kullanýcý olduðunda yönlendirileceði sayfa.
     opt.LoginPath = "/Login/Index/";
-    opt.LogoutPath = "/Login/LogOut/"; // 
+    opt.LogoutPath = "/Login/LogOut/";
     opt.AccessDeniedPath = "/Pages/AccessDenied/";
     opt.Cookie.HttpOnly = true;
     opt.Cookie.SameSite = SameSiteMode.Strict;
@@ -68,6 +67,9 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 
+builder.Services.AddHttpClient();
+builder.Services.AddControllersWithViews();
+
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
 
@@ -78,28 +80,39 @@ builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTo
 
 var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
-#region UI Services
-
 builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+//builder.Services.AddHttpClient<ICatalogStatisticService, CatalogStatisticService>(opt =>
+//{
+//    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+//builder.Services.AddHttpClient<IMessageStatisticService, MessageStatisticService>(opt =>
+//{
+//    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
+//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+//builder.Services.AddHttpClient<IDiscountStatisticService, DiscountStatisticService>(opt =>
+//{
+//    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
+//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+//builder.Services.AddHttpClient<IUserStatisticService, UserStatisticService>(opt =>
+//{
+//    opt.BaseAddress = new Uri(values.IdentityServerUrl);
+//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+//builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
+//{
+//    opt.BaseAddress = new Uri(values.IdentityServerUrl);
+//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
 builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
-}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-
-builder.Services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
-{
-    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
-}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-
-builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
-{
-    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<IOrderOderingService, OrderOderingService>(opt =>
@@ -107,6 +120,35 @@ builder.Services.AddHttpClient<IOrderOderingService, OrderOderingService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+builder.Services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+//builder.Services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
+//{
+//    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+//builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
+//{
+//    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+//builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
+//{
+//    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {
@@ -167,11 +209,6 @@ builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-#endregion
-
-
-builder.Services.AddHttpClient();
-builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -183,14 +220,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession();
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseSession();
-
 app.UseRouting();
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -204,7 +241,5 @@ app.UseEndpoints(endpoints =>
       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
 });
-
-
 
 app.Run();

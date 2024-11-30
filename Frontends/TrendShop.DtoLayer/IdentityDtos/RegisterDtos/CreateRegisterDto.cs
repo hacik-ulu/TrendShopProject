@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrendShop.DtoLayer.IdentityDtos.RegisterDto
+namespace TrendShop.DtoLayer.IdentityDtos.RegisterDtos
 {
     public class CreateRegisterDto
     {

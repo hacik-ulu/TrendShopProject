@@ -1,13 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Json;
-using TrendShop.DtoLayer.IdentityDtos.LoginDto;
+﻿using Microsoft.AspNetCore.Mvc;
 using TrendShop.DtoLayer.IdentityDtos.LoginDtos;
-using TrendShop.WebUI.Models;
 using TrendShop.WebUI.Services.Interfaces;
 
 namespace TrendShop.WebUI.Controllers
@@ -36,6 +28,6 @@ namespace TrendShop.WebUI.Controllers
             return RedirectToAction("Index", "User");
         }
 
-       
+
     }
 }

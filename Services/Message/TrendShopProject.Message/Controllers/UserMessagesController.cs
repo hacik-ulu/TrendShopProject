@@ -10,7 +10,7 @@ namespace TrendShopProject.Message.Controllers
     public class UserMessagesController : ControllerBase
     {
         private readonly IUserMessageService _userMessageService;
-
+        
         public UserMessagesController(IUserMessageService userMessageService)
         {
             _userMessageService = userMessageService;

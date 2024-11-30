@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
-using TrendShop.DtoLayer.IdentityDtos.RegisterDto;
+using TrendShop.DtoLayer.IdentityDtos.RegisterDtos;
 
 namespace TrendShop.WebUI.Controllers
 {

@@ -17,6 +17,8 @@
             @await Component.InvokeAsync("_UserLayoutNavbarComponentPartial")
 
             @RenderBody()
+             <script src="..."></script>
+            @RenderSection("Scripts", required: false) 
 
         </div>
     </div>

@@ -32,7 +32,6 @@ namespace TrendShop.WebUI.Controllers
 
         public async Task<IActionResult> Index(string code, int discountRate, decimal totalNewPriceWithDiscount)
         {
-            // ViewBag ile gelen veriler
             ViewBag.code = code;
             ViewBag.discountRate = discountRate;
             ViewBag.totalNewPriceWithDiscount = totalNewPriceWithDiscount;
@@ -40,41 +39,32 @@ namespace TrendShop.WebUI.Controllers
             ViewBag.directory2 = "Ürünler";
             ViewBag.directory3 = "Sepetim";
 
-            // Sepet verilerini al
             var values = await _basketService.GetBasket();
 
-            // Sepet toplam fiyatı
             decimal totalPrice = values.TotalPrice;
             ViewBag.total = totalPrice;
 
-            // KDV hesapla (%10)
             decimal tax = totalPrice / 100 * 10;
             decimal totalPriceWithTax = totalPrice + tax;
 
-            // KDV ve toplam fiyatı ViewBag'e ekle
             ViewBag.totalPriceWithTax = totalPriceWithTax;
             ViewBag.tax = tax;
 
-            // Kargo ücretini hesapla (örnek olarak sabit bir ücret kullanılıyor, dinamik olarak da hesaplanabilir)
-            decimal shippingFee = 30.00m; // Örnek kargo ücreti, ihtiyaç duyduğunuz şekilde dinamik olarak hesaplanabilir
+            decimal shippingFee = 30.00m; 
             ViewBag.ShippingFee = shippingFee;
 
-            // Session'dan indirimli tutarı al
             var discountedTotalString = HttpContext.Session.GetString("DiscountedTotal");
 
             decimal discountedTotal = 0;
             bool isCouponApplied = false;
 
-            // Eğer session'da indirimli fiyat varsa, bunu kullan
             if (!string.IsNullOrEmpty(discountedTotalString) && decimal.TryParse(discountedTotalString, out discountedTotal))
             {
-                // Kupon kodu uygulandı, indirimli fiyatı kullan
                 isCouponApplied = discountedTotal < totalPrice;
                 ViewBag.DiscountedTotal = discountedTotal;
             }
             else
             {
-                // Kupon kodu uygulanmadıysa, normal fiyatı kullan
                 ViewBag.DiscountedTotal = totalPriceWithTax;
             }
 
