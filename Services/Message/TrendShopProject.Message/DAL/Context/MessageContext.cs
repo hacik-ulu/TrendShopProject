@@ -9,7 +9,6 @@ namespace TrendShopProject.Message.DAL.Context
         {
 
         }
-
         public DbSet<UserMessage> UserMessages { get; set; }
     }
 }
