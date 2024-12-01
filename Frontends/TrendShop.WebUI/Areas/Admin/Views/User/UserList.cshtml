@@ -1,0 +1,41 @@
+﻿@model List<ResultUserDto>
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ad Soyad</th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                var nameSurname = item.name + " " + item.surname;
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@nameSurname</td>
+                                    <td>@item.userName</td>
+                                    <td>@item.email</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

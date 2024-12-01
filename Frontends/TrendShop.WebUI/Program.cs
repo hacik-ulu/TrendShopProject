@@ -26,6 +26,7 @@ using TrendShop.WebUI.Services.MessageServices;
 using TrendShop.WebUI.Services.OrderServices.OrderAddressServices;
 using TrendShop.WebUI.Services.OrderServices.OrderOderingServices;
 using TrendShop.WebUI.Services.OrderServices.OrderOrderingServices;
+using TrendShop.WebUI.Services.UserIdentityServices;
 using TrendShop.WebUI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -105,10 +106,10 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 //    opt.BaseAddress = new Uri(values.IdentityServerUrl);
 //}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-//builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
-//{
-//    opt.BaseAddress = new Uri(values.IdentityServerUrl);
-//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
+{
+    opt.BaseAddress = new Uri(values.IdentityServerUrl);
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
 {

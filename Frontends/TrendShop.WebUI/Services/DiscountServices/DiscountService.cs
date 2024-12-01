@@ -30,4 +30,3 @@ namespace TrendShop.WebUI.Services.DiscountServices
     }
 }
 
-// var responseMessage = await _httpClient.GetAsync("http://localhost:7208/api/Discounts/GetDiscountCouponCountRate?code=" + code)
