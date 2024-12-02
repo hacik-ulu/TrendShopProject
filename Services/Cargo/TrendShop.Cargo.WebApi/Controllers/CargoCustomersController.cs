@@ -44,6 +44,7 @@ namespace TrendShop.Cargo.WebApi.Controllers
                 Name = createCargoCustomerDto.Name,
                 Phone = createCargoCustomerDto.Phone,
                 Surname = createCargoCustomerDto.Surname,
+                UserCustomerID = createCargoCustomerDto.UserCustomerID
             };
             _cargoCustomerService.TAdd(cargoCustomer);
             return Ok("Kargo Müşteri Ekleme İşlemi Başarıyla Yapıldı");
@@ -74,5 +75,10 @@ namespace TrendShop.Cargo.WebApi.Controllers
             return Ok("Kargo Müşteri Güncelleme İşlemi Başarıyla Yapıldı");
         }
 
+        [HttpGet("GetCargoCustomerById")]
+        public IActionResult GetCargoCustomerById(string id)
+        {
+            return Ok(_cargoCustomerService.TGetCargoCustomerById(id));
+        }
     }
 }

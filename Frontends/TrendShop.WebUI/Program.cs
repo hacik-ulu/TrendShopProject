@@ -7,6 +7,8 @@ using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using TrendShop.WebUI.Handlers;
 using TrendShop.WebUI.Services.BasketServices;
+using TrendShop.WebUI.Services.CargoServices.CargoCompanyServices;
+using TrendShop.WebUI.Services.CargoServices.CargoCustomerServices;
 using TrendShop.WebUI.Services.CatalogServices.AboutServices;
 using TrendShop.WebUI.Services.CatalogServices.BrandServices;
 using TrendShop.WebUI.Services.CatalogServices.CategoryServices;
@@ -131,15 +133,15 @@ builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-//builder.Services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
-//{
-//    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
-//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+builder.Services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-//builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
-//{
-//    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
-//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 //builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
 //{

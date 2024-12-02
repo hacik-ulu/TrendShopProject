@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TrendShop.WebUI.Services.CargoServices.CargoCustomerServices;
 using TrendShop.WebUI.Services.UserIdentityServices;
 
 namespace TrendShop.WebUI.Areas.Admin.Controllers
@@ -7,9 +8,11 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private readonly IUserIdentityService _userIdentityService;
-        public UserController(IUserIdentityService userIdentityService)
+        private readonly ICargoCustomerService _cargoCustomerService;
+        public UserController(IUserIdentityService userIdentityService, ICargoCustomerService cargoCustomerService)
         {
             _userIdentityService = userIdentityService;
+            _cargoCustomerService = cargoCustomerService;
         }
 
         public async Task<IActionResult> UserList()
@@ -18,6 +21,15 @@ namespace TrendShop.WebUI.Areas.Admin.Controllers
             var values = await _userIdentityService.GetAllUserListAsync();
             return View(values);
         }
+
+
+        public async Task<IActionResult> UserAddressInfo(string id)
+        {
+            var values = await _cargoCustomerService.GetByIdCargoCustomerInfoAsync(id);
+            return View(values);
+        }
+
+
 
         void UserListViewbagList()
         {

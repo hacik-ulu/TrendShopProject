@@ -1,8 +1,8 @@
-﻿@model List<ResultUserDto>
-@{
-    ViewData["Title"] = "UserList";
-    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+﻿@model List<ResultCargoCompanyDto>
 
+@{
+    ViewData["Title"] = "CargoCompanyList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
     int count = 0;
 }
 
@@ -15,27 +15,25 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Ad Soyad</th>
-                                <th>Kullanıcı Adı</th>
-                                <th>Email</th>
-                                <th>Adres Detayı</th>
+                                <th>Kargo Adı</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                var nameSurname = item.name + " " + item.surname;
                                 count++;
                                 <tr>
-                                    <td>@count</td>
-                                    <td>@nameSurname</td>
-                                    <td>@item.userName</td>
-                                    <td>@item.email</td>
-                                    <td><a href="/Admin/User/UserAddressInfo/@item.id" class="btn btn-warning">Adres Detayı</a></td>
+                                    <th scope="row">@count</th>
+                                    <td>@item.CargoCompanyName</td>
+                                    <td><a href="/Admin/Cargo/DeleteCargoCompany/@item.CargoCompanyID" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Cargo/UpdateCargoCompany/@item.CargoCompanyID" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
-                    </table>
+                    </table><br />
+                    <a href="/Admin/Cargo/CreateCargoCompany/" class="btn btn-primary">Yeni Kargo Firması Girişi</a>
                 </div>
             </div>
         </div>

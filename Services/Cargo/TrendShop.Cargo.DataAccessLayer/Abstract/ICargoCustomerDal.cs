@@ -7,7 +7,8 @@ using TrendShop.Cargo.EntityLayer.Concrete;
 
 namespace TrendShop.Cargo.DataAccessLayer.Abstract
 {
-    public interface ICargoCustomerDal :IGenericDal<CargoCustomer>
+    public interface ICargoCustomerDal : IGenericDal<CargoCustomer>
     {
+        CargoCustomer GetCargoCustomerById(string id);
     }
 }
