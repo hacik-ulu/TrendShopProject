@@ -35,5 +35,14 @@ namespace TrendShop.Catalog.Controllers
             return Ok(value);
         }
 
+
+        [HttpGet("GetProductAvgPrice")]
+        public async Task<IActionResult> GetProductAvgPrice()
+        {
+            var value = await _statisticService.GetProductAvgPrice();
+            return Ok(value);
+        }
+
+
     }
 }

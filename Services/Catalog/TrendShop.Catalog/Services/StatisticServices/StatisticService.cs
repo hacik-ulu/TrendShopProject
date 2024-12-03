@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using TrendShop.Catalog.Entities;
 using TrendShop.Catalog.Settings;
 
@@ -29,10 +30,29 @@ namespace TrendShop.Catalog.Services.StatisticServices
             return _categoryCollection.CountDocumentsAsync(FilterDefinition<Category>.Empty);
         }
 
-        public Task<decimal> GetProductAvgPrice()
+        public async Task<decimal> GetProductAvgPrice()
         {
-            throw new NotImplementedException();
+            var pipeline = new BsonDocument[]
+            {
+            new BsonDocument("$group", new BsonDocument
+            {
+                {"_id", new BsonDocument()}, 
+                {"averagePrice", new BsonDocument("$avg", "$ProductPrice")}
+            })
+                };
+
+            var result = await _productCollection.AggregateAsync<BsonDocument>(pipeline);
+            var averagePriceValue = result.FirstOrDefault()?.GetValue("averagePrice");
+
+            if (averagePriceValue == null || averagePriceValue.IsBsonNull)
+            {
+                return decimal.Zero;
+            }
+
+            return averagePriceValue.ToDecimal();
         }
+
+
 
         public Task<long> GetProductCount()
         {
