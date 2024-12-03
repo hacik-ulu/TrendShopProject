@@ -10,7 +10,7 @@ namespace TrendShopProject.Message.Controllers
     public class UserMessagesController : ControllerBase
     {
         private readonly IUserMessageService _userMessageService;
-        
+
         public UserMessagesController(IUserMessageService userMessageService)
         {
             _userMessageService = userMessageService;
@@ -57,5 +57,15 @@ namespace TrendShopProject.Message.Controllers
             await _userMessageService.UpdateMessageAsync(updateMessageDto);
             return Ok("Mesaj başarıyla güncellendi");
         }
+
+        [HttpGet("GetMessageCount")]
+        public async Task<IActionResult> GetMessageCount()
+        {
+            var values = await _userMessageService.GetMessageCountAsync();
+            return Ok(values);
+        }
+
+
+
     }
 }

@@ -64,6 +64,26 @@ namespace TrendShop.Comment.Controllers
             return Ok(value);
         }
 
+        [HttpGet("GetPassiveCommentCount")]
+        public IActionResult GetPassiveCommentCount()
+        {
+            int count = _context.UserComments.Where(x => x.Status == false).Count();
+            return Ok(count);
+        }
+
+        [HttpGet("GetActiveCommentCount")]
+        public IActionResult GetActiveCommentCount()
+        {
+            int count = _context.UserComments.Where(x => x.Status == true).Count();
+            return Ok(count);
+        }
+
+        [HttpGet("GetTotalCommentCount")]
+        public IActionResult GetTotalCommentCount()
+        {
+            int count = _context.UserComments.Count();
+            return Ok(count);
+        }
 
 
     }

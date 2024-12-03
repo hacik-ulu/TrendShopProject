@@ -66,5 +66,14 @@ namespace TrendShop.Discount.Controllers
             var values = _discountService.GetDiscountCouponRate(code);
             return Ok(values);
         }
+
+        [HttpGet("GetDiscountCouponCount")]
+        public async Task<IActionResult> GetDiscountCouponCount()
+        {
+            var values = await _discountService.GetDiscountCouponCount();
+            return Ok(values);
+        }
+
+
     }
 }
