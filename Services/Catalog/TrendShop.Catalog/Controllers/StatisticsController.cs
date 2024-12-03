@@ -43,6 +43,22 @@ namespace TrendShop.Catalog.Controllers
             return Ok(value);
         }
 
+        [HttpGet("GetMaxPriceProductName")]
+        public async Task<IActionResult> GetMaxPriceProductName()
+        {
+            var value = await _statisticService.GetMaxPriceProductName();
+            return Ok(value);
+        }
+
+        [HttpGet("GetMinPriceProductName")]
+        public async Task<IActionResult> GetMinPriceProductName()
+        {
+            var value = await _statisticService.GetMinPriceProductName();
+            return Ok(value);
+        }
+
+
+
 
     }
 }
