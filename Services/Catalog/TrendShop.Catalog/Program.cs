@@ -13,6 +13,7 @@ using TrendShop.Catalog.Services.FeatureSliderServices;
 using TrendShop.Catalog.Services.OfferDiscountServices;
 using TrendShop.Catalog.Services.ProductImageServices;
 using TrendShop.Catalog.Services.SpecialOfferServices;
+using TrendShop.Catalog.Services.StatisticServices;
 using TrendShop.Catalog.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,7 @@ builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IContactService, ContactService>();
+builder.Services.AddScoped<IStatisticService, StatisticService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
