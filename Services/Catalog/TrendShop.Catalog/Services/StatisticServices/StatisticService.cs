@@ -72,10 +72,8 @@ namespace TrendShop.Catalog.Services.StatisticServices
                 return decimal.Zero;
             }
 
-            return averagePriceValue.ToDecimal();
+            return Math.Round(averagePriceValue.ToDecimal(), 2);
         }
-
-
 
         public Task<long> GetProductCount()
         {

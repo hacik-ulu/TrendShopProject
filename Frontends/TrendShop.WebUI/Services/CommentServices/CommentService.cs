@@ -42,5 +42,29 @@ namespace TrendShop.WebUI.Services.CommentServices
             var values = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsonData);
             return values;
         }
+
+        public async Task<int> GetTotalComment()
+        {
+            var responseMessage = await _httpClient.GetAsync($"comments/GetTotalCommentCount");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<int>(jsonData);
+            return values;
+        }
+
+        public async Task<int> GetActiveComment()
+        {
+            var responseMessage = await _httpClient.GetAsync($"comments/GetActiveCommentCount");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<int>(jsonData);
+            return values;
+        }
+
+        public async Task<int> GetPassiveComment()
+        {
+            var responseMessage = await _httpClient.GetAsync($"comments/GetPassiveCommentCount");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<int>(jsonData);
+            return values;
+        }
     }
 }

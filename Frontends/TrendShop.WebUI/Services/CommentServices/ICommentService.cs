@@ -10,5 +10,8 @@ namespace TrendShop.WebUI.Services.CommentServices
         Task UpdateCommentAsync(UpdateCommentDto updateCommentDto);
         Task DeleteCommentAsync(string id);
         Task<UpdateCommentDto> GetByIdCommentAsync(string id);
+        Task<int> GetTotalComment();
+        Task<int> GetActiveComment();
+        Task<int> GetPassiveComment();
     }
 }
