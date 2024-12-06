@@ -87,6 +87,9 @@ builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTo
 
 var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
+
+#region Services
+
 builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
@@ -212,6 +215,8 @@ builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -234,8 +239,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
