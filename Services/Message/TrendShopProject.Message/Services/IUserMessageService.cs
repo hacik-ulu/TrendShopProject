@@ -12,5 +12,9 @@ namespace TrendShopProject.Message.Services
         Task DeleteMessageAsync(int id);
         Task<GetByIdMessageDto> GetByIdMessageAsync(int id);
         Task<int> GetMessageCountAsync();
+
+        // Giriş yapan kullanıcıya göre toplam mesajı getirecek.
+        Task<int> GetTotalMessageCountByReceiver(string id);
+
     }
 }

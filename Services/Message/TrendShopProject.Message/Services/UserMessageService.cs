@@ -59,6 +59,12 @@ namespace TrendShopProject.Message.Services
             return _mapper.Map<List<ResultSendboxMessageDto>>(values);
         }
 
+        public async Task<int> GetTotalMessageCountByReceiver(string id)
+        {
+            int values = await _messageContext.UserMessages.Where(x => x.ReceiverID == id).CountAsync();
+            return values;
+        }
+
         public async Task UpdateMessageAsync(UpdateMessageDto updateMessageDto)
         {
             var values = _mapper.Map<UserMessage>(updateMessageDto);

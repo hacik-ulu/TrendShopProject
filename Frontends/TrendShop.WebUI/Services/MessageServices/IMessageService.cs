@@ -6,5 +6,6 @@ namespace TrendShop.WebUI.Services.MessageServices
     {
         Task<List<ResultInboxMessageDto>> GetInboxMessageAsync(string id); // Gelen mesajlar (receiver id'ye göre gelecek.)
         Task<List<ResultSendboxMessageDto>> GetSendboxMessageAsync(string id); // Gönderilen mesajlar (sender id'ye göre gelecek.)
+        Task<int> GetTotalMessageCountByReceiverId(string id);
     }
 }

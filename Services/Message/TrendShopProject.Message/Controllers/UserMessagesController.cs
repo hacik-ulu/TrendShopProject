@@ -65,6 +65,12 @@ namespace TrendShopProject.Message.Controllers
             return Ok(values);
         }
 
+        [HttpGet("GetTotalMessageCountByReceiverId")]
+        public async Task<IActionResult> GetTotalMessageCountByReceiverId(string id)
+        {
+            var values = await _userMessageService.GetTotalMessageCountByReceiver(id);
+            return Ok(values);
+        }
 
 
     }
