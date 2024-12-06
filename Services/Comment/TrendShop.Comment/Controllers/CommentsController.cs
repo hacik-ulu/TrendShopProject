@@ -11,7 +11,6 @@ namespace TrendShop.Comment.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly CommentContext _context;
-
         public CommentsController(CommentContext context)
         {
             _context = context;
