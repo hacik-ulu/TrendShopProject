@@ -147,11 +147,6 @@ builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt 
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-//builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
-//{
-//    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
-//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
 builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
