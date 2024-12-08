@@ -96,3 +96,6 @@ namespace TrendShopProject.Images.WebUI.Services
         }
     }
 }
+
+
+// CloudStorageService files edited.
