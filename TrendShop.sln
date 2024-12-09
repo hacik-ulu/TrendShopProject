@@ -99,9 +99,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShopProject.Images.Web
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMQMessage", "RabbitMQMessage", "{07F5D554-C679-413C-B34E-BE3B84C74E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShopProject.RabbitMQMessageApi", "RabbitMQMessage\TrendShopProject.RabbitMQMessageApi\TrendShopProject.RabbitMQMessageApi.csproj", "{F8D0BA08-CE83-471F-9AF0-7F1A964E5A6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShopProject.RabbitMQMessageApi", "RabbitMQMessage\TrendShopProject.RabbitMQMessageApi\TrendShopProject.RabbitMQMessageApi.csproj", "{F8D0BA08-CE83-471F-9AF0-7F1A964E5A6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendShopProject.RapidApiWebUI", "RapidApi\TrendShopProject.RapidApiWebUI\TrendShopProject.RapidApiWebUI.csproj", "{28327BD3-5C69-4210-ACDA-323A0F5D4743}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendShopProject.RapidApiWebUI", "RapidApi\TrendShopProject.RapidApiWebUI\TrendShopProject.RapidApiWebUI.csproj", "{28327BD3-5C69-4210-ACDA-323A0F5D4743}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,53 @@
+﻿@model MailRequest
+@{
+    Layout = null;
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Mail Gönderme Sayfası</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="receiverMail" class="form-label">Alıcı Mail Adresi</label>
+                    <input type="email" id="receiverMail" asp-for="ReceiverMail" class="form-control" placeholder="Ornek: alici@example.com" />
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Konu</label>
+                    <input type="text" id="subject" asp-for="Subject" class="form-control" placeholder="E-postanın konusu" />
+                </div>
+                <div class="mb-3">
+                    <label for="messageContent" class="form-label">Mesaj İçeriği</label>
+                    <textarea id="messageContent" asp-for="MessageContent" class="form-control" rows="5" placeholder="Mesajınızı buraya yazın..."></textarea>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Gönder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .card {
+        max-width: 600px;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+    .form-label {
+        font-weight: 500;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>
