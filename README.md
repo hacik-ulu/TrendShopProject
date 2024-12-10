@@ -10,6 +10,7 @@ With a focus on performance, scalability, and security, TrendShop integrates mod
  ## 🚀🚀 Technologies Used ##
 
 - ASP.NET Core: Provides a robust and scalable framework for backend development.
+- Microservices Architecture: Enables modular development and scalability by separating functionalities into independent services.
 - Onion Architecture: Ensures separation of concerns and promotes maintainable, testable code.
 - Repository Pattern: Abstracts data access logic, making it reusable and easier to manage.
 - CQRS (Command Query Responsibility Segregation): Separates read and write operations for optimized system performance.
@@ -24,7 +25,9 @@ With a focus on performance, scalability, and security, TrendShop integrates mod
 - FluentValidation: Simplifies the validation of user inputs and ensures data integrity.
 - HTML, CSS, Bootstrap: Crafts a responsive and aesthetically pleasing user interface.
 - JavaScript: Enhances interactivity and responsiveness of the front-end.
-- Microservices Architecture: Enables modular development and scalability by separating functionalities into independent services.
+- MongoDB: Offers a flexible, NoSQL database solution for handling unstructured data and scalability.
+- PostgreSQL: A powerful, open-source relational database system known for its performance and reliability.
+- Redis: Implements in-memory data storage for caching and real-time application performance optimization.
 
 
  ## 🛍️💻 Project Screenshot ##
